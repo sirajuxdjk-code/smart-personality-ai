@@ -9,7 +9,7 @@
 <title>Smart Personality AI</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;600;700&family=Montserrat:wght@700;900&family=Bebas+Neue&family=Anton&family=Bangers&family=Pacifico&family=Hind:wght@600;700&family=Yatra+One&display=swap" rel="stylesheet">
 <style>
 :root{--bg:#f4f3ff;--card:#fff;--tx:#1b1740;--mu:#6b6890;--a:#4f46e5;--b:#9333ea;--bd:#e4e1fb;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px)}
 @media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f0d24;--card:#1a1740;--tx:#f0eeff;--mu:#a29fcf;--bd:#2c2862}}
@@ -163,7 +163,7 @@ $('#nav').querySelectorAll('button').forEach(b=>b.onclick=()=>nav(b.dataset.n))}
 function langChips(){return `<div class="chips">${LANGS.map(l=>`<span class="chip ${S.lang===l?'on':''}" data-lg="${l}">${l==='Other'?'🌐 Other':l}</span>`).join('')}</div>${S.lang==='Other'?`<input id="oth" placeholder="Language (Tamil, Bengali, Spanish…)" value="${esc(S.other)}">`:''}`}
 function bindLang(){document.querySelectorAll("[data-lg]").forEach(c=>c.onclick=()=>{S.lang=c.dataset.lg;save();render()});const o=$('#oth');if(o)o.oninput=()=>{S.other=o.value;save()}}
 const pct=()=>Math.round(S.done.length/ALL.length*100);
-function render(){renderNav();const m=$('#main');m.style.cssText='';({home,cat,lesson,chat,studio,saved,me,plan,search,vgen,photo,suraj,hist})[view](m);bindLang()}
+function render(){renderNav();const m=$('#main');m.style.cssText='';({home,cat,lesson,chat,studio,saved,me,plan,search,vgen,photo,suraj,hist,cap})[view](m);bindLang()}
 function home(m){
  const ct=c=>ALL.filter(l=>l.cat.id===c.id).length;
  m.innerHTML=`<div class="hero"><div class="ring"><svg width="64" height="64" viewBox="0 0 36 36"><circle cx="18" cy="18" r="15.9155" fill="none" stroke="#ffffff40" stroke-width="3"/><circle cx="18" cy="18" r="15.9155" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-dasharray="${pct()} 100" transform="rotate(-90 18 18)"/></svg><b>${pct()}%</b></div>
@@ -171,13 +171,14 @@ function home(m){
  <div class="pill">🔍<input id="q" placeholder="${tr('search')}"></div>
  ${langChips()}
  <div class="qa">${[['hc','💬','AI Chat','#6366f1,#8b5cf6'],['hv','🎥','Video','#ec4899,#8b5cf6'],['hp','📸','Photo','#f59e0b,#ec4899'],['hs','','Suraj','#f59e0b,#dc2626']].map(([id,e,n,c])=>id==='hs'?`<div class="qt" id="hs" style="display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:700;color:#fff;border:0;background:linear-gradient(135deg,${c})">${n}</div>`:`<div class="qt" id="${id}"><span style="background:linear-gradient(135deg,${c})">${e}</span>${n}</div>`).join('')}</div>
+ <button class="btn g" id="hcp" style="width:100%;margin-bottom:12px">🎬 Caption Studio — video par Hindi/Hinglish/English captions</button>
  <div class="row" style="margin-bottom:14px"><button class="btn" style="flex:1" id="bp">📅 7/30-Day Plan</button><button class="btn g" style="flex:1" id="bd">⚡ Daily Task</button></div>
  <div class="sec"><h3>${tr('cats')}</h3></div><div class="grid">${CATS.map(c=>`<div class="cat2" style="background:linear-gradient(135deg,${c.c})" data-c="${c.id}"><span class="e">${c.e}</span><div><b>${c.n[L()]||c.n.English}</b><br><i>${ct(c)} lessons</i></div></div>`).join('')}</div>
  <div class="card" style="margin-top:14px"><b>⚡ ${bi("Today's task",'Aaj ka task','आज का टास्क')}</b><div id="dt" class="md mu" style="margin-top:6px">Tap ⚡ Daily Task for today's speaking challenge.</div></div>
  <p class="mu" style="text-align:center">Smart Personality AI educational guidance deta hai. Social media growth ki koi guarantee nahi hoti.</p>`;
  $('#q').onkeydown=e=>{if(e.key==='Enter'&&e.target.value.trim())nav('search',{q:e.target.value.trim()})};
  m.querySelectorAll('[data-c]').forEach(c=>c.onclick=()=>nav('cat',{id:c.dataset.c}));
- $('#bp').onclick=()=>nav('plan');$('#hv').onclick=()=>nav('vgen');$('#hs').onclick=()=>nav('suraj');$('#hc').onclick=()=>nav('chat');$('#hp').onclick=()=>nav('photo');
+ $('#bp').onclick=()=>nav('plan');$('#hv').onclick=()=>nav('vgen');$('#hs').onclick=()=>nav('suraj');$('#hc').onclick=()=>nav('chat');$('#hcp').onclick=()=>nav('cap');$('#hp').onclick=()=>nav('photo');
  $('#bd').onclick=async()=>{const d=$('#dt');d.innerHTML='<span class="spin"></span> Creating…';try{d.className='md';d.textContent=await ai(`Give ONE short daily task for today (a speaking, confidence or social-media exercise) for a ${S.level} learner: 3 short steps and a 1-line quiz question with its answer. Reply in ${langName()}. Day seed ${new Date().toDateString()}.`,x=>d.textContent=x)}catch(e){d.innerHTML=`<span class="err">${esc(e.message||'Error')}</span>`}}}
 function search(m){const q=ctx.q.toLowerCase();const r=ALL.filter(l=>l.t.join(' ').toLowerCase().includes(q)||l.cat.n.English.toLowerCase().includes(q));
  m.innerHTML=`<button class="back" id="bk">← Back</button><h2>🔍 "${esc(ctx.q)}"</h2>${r.map(l=>`<div class="card" data-l="${l.id}" style="cursor:pointer">${l.cat.e} ${lt(l.t)}</div>`).join('')||'<p class="mu">No lesson found.</p>'}<button class="btn" id="as">🤖 Ask AI Coach</button>`;
@@ -454,6 +455,117 @@ function hist(m){const a=S.chats||[];
  m.querySelectorAll('[data-o]').forEach(d=>d.onclick=()=>{const c=a.find(x=>x.id===d.dataset.o);if(c){S.hist=c.msgs.slice();S.cid=c.id;save();nav('chat')}});
  m.querySelectorAll('[data-x]').forEach(d=>d.onclick=()=>{S.chats=a.filter(x=>x.id!==d.dataset.x);if(S.cid===d.dataset.x){S.cid=null}save();render()});
  const ca=$('#ca');if(ca)ca.onclick=()=>{if(confirm('Saari chat history delete karein?')){S.chats=[];S.cid=null;save();render()}}}
+/* ====== CAPTION STUDIO (original CapCut-style text styles, colours, fonts & animations) ====== */
+const CPF=['Poppins','Montserrat','Bebas Neue','Anton','Bangers','Pacifico','Hind','Yatra One'];
+const CPC=['#ffffff','#facc15','#fb923c','#f43f5e','#ec4899','#a855f7','#60a5fa','#22d3ee','#4ade80','#111111'];
+const RB=['#f43f5e','#fb923c','#facc15','#4ade80','#22d3ee','#60a5fa','#a855f7','#ec4899'];
+const CPA=[['fade','Fade'],['pop','Pop'],['up','Slide up'],['left','Slide left'],['bounce','Bounce'],['type','Typewriter'],['words','Word by word'],['karaoke','Karaoke'],['shake','Shake'],['zoom','Zoom in']];
+const CPP={'Classic':{fill:'#ffffff',stroke:'#000000',sw:.14,font:'Poppins',anim:'pop'},'Yellow Pop':{fill:'#facc15',stroke:'#000000',sw:.16,font:'Anton',anim:'zoom'},'Neon Pink':{fill:'#ffffff',stroke:'#ec4899',sw:.08,glow:'#ec4899',font:'Bebas Neue',anim:'fade'},'Cyan Glow':{fill:'#e0ffff',stroke:'#0e7490',sw:.06,glow:'#22d3ee',font:'Montserrat',anim:'up'},'Fire':{fill:['#fde047','#ef4444'],stroke:'#450a0a',sw:.14,font:'Anton',anim:'bounce'},'Gold':{fill:['#fff7ae','#f59e0b'],stroke:'#422006',sw:.12,font:'Poppins',anim:'zoom'},'Red Box':{fill:'#ffffff',box:'#dc2626',font:'Poppins',anim:'left'},'Black Box':{fill:'#facc15',box:'#000000cc',font:'Montserrat',anim:'words'},'Karaoke':{fill:'#ffffff',stroke:'#000000',sw:.14,hl:'#facc15',font:'Montserrat',anim:'karaoke'},'Comic':{fill:'#ffffff',stroke:'#7c3aed',sw:.16,font:'Bangers',anim:'bounce'},'Retro':{fill:'#fde68a',stroke:'#7c2d12',sw:.12,glow:'#000000',font:'Pacifico',anim:'type'},'Duo Glow':{fill:'#ffffff',fill2:'#f472b6',mc:'two',glow:'match',stroke:'#000000',sw:.1,font:'Montserrat',anim:'words'},'Rainbow Glow':{fill:'#ffffff',mc:'rainbow',glow:'match',stroke:'#000000',sw:.1,font:'Anton',anim:'pop'},'Hindi Bold':{fill:'#ffffff',stroke:'#000000',sw:.14,font:'Yatra One',anim:'pop'}};
+const CAP_ENDPOINT='https://smart-caption.sirajuxdjk.workers.dev'; // Worker from caption-worker.js
+const CP={file:null,v:null,D:0,w:540,h:960,lines:[],script:'',lang:'Hinglish',st:{...CPP['Classic'],size:7,pos:'bottom',up:false,hl:'#facc15'},busy:false,msg:'',res:null,exp:false};
+const cpLn=()=>CP.lang==='Hinglish'?'Hinglish (Hindi written in English letters, natural spoken style)':CP.lang==='हिन्दी'?'Hindi in Devanagari script':'English';
+function cpEnd(i){const l=CP.lines,n=l[i+1];return Math.min(n?n.s:(CP.D||1e9),l[i].s+5)}
+function cpAt(t){for(let i=CP.lines.length-1;i>=0;i--){if(t>=CP.lines[i].s&&t<cpEnd(i))return i}return -1}
+function cpEven(arr){const D=CP.D||30,n=arr.length;CP.lines=arr.map((t,i)=>({t,s:+(i*D/n).toFixed(1)}))}
+function capFrame(c,W,H,text,local,d,st){
+ if(!text)return;const px=Math.round(W*st.size/100),heavy=['Bebas Neue','Anton','Bangers','Pacifico','Yatra One'].includes(st.font);
+ c.font=`${heavy?400:700} ${px}px "${st.font}","Noto Sans Devanagari",sans-serif`;c.textBaseline='alphabetic';
+ const T=st.up?text.toUpperCase():text,words=T.split(/\s+/).filter(Boolean),sp=c.measureText(' ').width,mw=W*.88;
+ const L=[];let cur=[],cw=0,pos=0;words.forEach((w,i)=>{const ww=c.measureText(w).width;if(cur.length&&cw+sp+ww>mw){L.push({ws:cur,w:cw});cur=[];cw=0}cur.push({w,ww,i,pos});cw+=(cur.length>1?sp:0)+ww;pos+=w.length+1});L.push({ws:cur,w:cw});
+ const lh=px*1.28,N=words.length,in_=Math.min(1,local/.35),e=1-Math.pow(1-in_,3),out=Math.max(0,Math.min(1,(d-local)/.15));
+ let tx=0,ty=0,sc=1,al=out,vis=N,chars=T.length,act=-1;
+ switch(st.anim){case'fade':al=e*out;break;case'pop':sc=e<1?.5+.6*e-(.1*e*e):1;if(in_>.6)sc=1+.1*Math.sin(in_*Math.PI);al=Math.min(1,in_*3)*out;break;
+  case'up':ty=(1-e)*H*.06;al=e*out;break;case'left':tx=-(1-e)*W*.35;al=e*out;break;
+  case'bounce':{const k=Math.min(1,local/.55);ty=-Math.sin(k*Math.PI*2.5)*(1-k)*H*.06;al=Math.min(1,in_*3)*out;break}
+  case'type':chars=Math.floor(T.length*Math.min(1,local/Math.max(.5,d*.7)));break;
+  case'words':vis=Math.ceil(N*Math.min(1,local/Math.max(.5,d*.75)));break;
+  case'karaoke':act=Math.min(N-1,Math.floor(N*local/Math.max(.3,d)));break;
+  case'shake':tx=local<.5?Math.sin(local*60)*W*.008:0;break;case'zoom':sc=1+.35*(1-e);al=e*out;break}
+ const y0=st.pos==='top'?H*.1+px:st.pos==='mid'?H/2-(L.length-1)*lh/2+px*.35:H*.86-(L.length-1)*lh,cy=y0+(L.length-1)*lh/2-px*.3;
+ c.save();c.globalAlpha=Math.max(0,Math.min(1,al));c.translate(W/2+tx,cy+ty);c.scale(sc,sc);c.translate(-W/2,-cy);c.lineJoin='round';
+ L.forEach((ln,li)=>{let x=(W-ln.w)/2;const y=y0+li*lh;
+  if(st.box){c.fillStyle=st.box;c.beginPath();const bx=x-px*.45,by=y-px*.95,bw=ln.w+px*.9,bh=px*1.3;if(c.roundRect)c.roundRect(bx,by,bw,bh,px*.25);else c.rect(bx,by,bw,bh);c.fill()}
+  ln.ws.forEach(o=>{const show=st.anim==='words'?o.i<vis:true;let s2=o.w;if(st.anim==='type'){if(o.pos>=chars)s2='';else s2=o.w.slice(0,chars-o.pos)}
+   if(show&&s2){let f=st.fill;if(st.mc==='two'&&o.i%2)f=st.fill2||'#facc15';else if(st.mc==='rainbow')f=RB[o.i%RB.length];if(st.anim==='karaoke'&&o.i===act)f=st.hl||'#facc15';
+   const gc=st.glow==='match'?(Array.isArray(f)?f[1]:f):st.glow,gs=px*(st.gb||.55);
+   if(st.stroke&&st.sw){if(gc){c.shadowColor=gc;c.shadowBlur=gs}c.lineWidth=px*st.sw;c.strokeStyle=st.stroke;c.strokeText(s2,x,y);c.shadowBlur=0;c.shadowColor='transparent'}
+   if(Array.isArray(f)){const g=c.createLinearGradient(0,y-px,0,y+px*.15);g.addColorStop(0,f[0]);g.addColorStop(1,f[1]);f=g}
+   c.fillStyle=f;for(let k=0;k<(gc?2:1);k++){if(gc){c.shadowColor=gc;c.shadowBlur=gs*(k?1.6:.8)}c.fillText(s2,x,y)}c.shadowBlur=0;c.shadowColor='transparent'}
+   x+=o.ww+sp})});
+ c.restore()}
+function capDraw(){const cv=$('#cpc');if(!cv)return false;const c=cv.getContext('2d'),W=cv.width,H=cv.height,v=CP.v;
+ if(v&&v.readyState>=2)c.drawImage(v,0,0,W,H);else{const g=c.createLinearGradient(0,0,W,H);g.addColorStop(0,'#312e81');g.addColorStop(1,'#9333ea');c.fillStyle=g;c.fillRect(0,0,W,H)}
+ let text,local,d;if(v){const t=v.currentTime,i=cpAt(t);if(i<0)return true;text=CP.lines[i].t;local=t-CP.lines[i].s;d=cpEnd(i)-CP.lines[i].s}
+ else{text=(CP.lines[0]&&CP.lines[0].t)||bi('Your caption here','Aapka caption yahan','आपका कैप्शन यहाँ');local=(performance.now()/1000)%2.8;d=2.8}
+ capFrame(c,W,H,text,local,d,CP.st);return true}
+let capRaf=0;
+function capLoop(){cancelAnimationFrame(capRaf);const f=()=>{if(view!=='cap'||!$('#cpc'))return;capDraw();const v=CP.v,tl=$('#cpt');if(v&&tl){tl.textContent=v.currentTime.toFixed(1)+' / '+(CP.D||0).toFixed(1)+'s';const sk=$('#cps');if(sk&&!CP.seek)sk.value=v.currentTime}capRaf=requestAnimationFrame(f)};f()}
+function cpSplit(t){const out=[];t.split(/\n+|(?<=[.!?।])\s+/).map(x=>x.trim()).filter(Boolean).forEach(ln=>{const w=ln.split(/\s+/);for(let i=0;i<w.length;i+=5)out.push(w.slice(i,i+5).join(' '))});return out}
+
+function cpMap(a){const num=v=>typeof v==='number'?v:(/^\d+:\d+/.test(String(v))?String(v).split(':').reduce((x,y)=>x*60+parseFloat(y),0):parseFloat(v)||0);return (Array.isArray(a)?a:[]).map(x=>({t:String(x.text||x.t||'').trim(),s:+num(x.start!==undefined?x.start:x.s).toFixed(1)})).filter(x=>x.t).sort((x,y)=>x.s-y.s)}
+function cpWav(pcm,sr){const n=pcm.length,b=new ArrayBuffer(44+n*2),w=new DataView(b),W=(o,t)=>[...t].forEach((c,i)=>w.setUint8(o+i,c.charCodeAt(0)));W(0,'RIFF');w.setUint32(4,36+n*2,true);W(8,'WAVEfmt ');w.setUint32(16,16,true);w.setUint16(20,1,true);w.setUint16(22,1,true);w.setUint32(24,sr,true);w.setUint32(28,sr*2,true);w.setUint16(32,2,true);w.setUint16(34,16,true);W(36,'data');w.setUint32(40,n*2,true);for(let i=0;i<n;i++){const x=Math.max(-1,Math.min(1,pcm[i]));w.setInt16(44+i*2,x<0?x*32768:x*32767,true)}
+ const u=new Uint8Array(b);let s='';for(let i=0;i<u.length;i+=0x8000)s+=String.fromCharCode.apply(null,u.subarray(i,i+0x8000));return btoa(s)}
+async function cpAudio(f){const AC=window.AudioContext||window.webkitAudioContext,ac=new AC(),ab=await ac.decodeAudioData(await f.arrayBuffer());try{ac.close()}catch(e){}
+ const oc=new OfflineAudioContext(1,Math.max(1,Math.ceil(ab.duration*16000)),16000),src=oc.createBufferSource();src.buffer=ab;src.connect(oc.destination);src.start();const r=await oc.startRendering();return cpWav(r.getChannelData(0),16000)}
+async function capAuto(){if(!CP.v||!CP.file){CP.msg='⚠️ Pehle video chunein.';return render()}if(CP.D>180){CP.msg='⚠️ Auto caption ke liye video 3 minute se chhoti rakhein.';return render()}if(CP.file.size>150e6){CP.msg='⚠️ Video file bahut badi hai (150MB tak).';return render()}
+ CP.busy=true;CP.msg='🎙️ Awaaz nikal rahi hai…';render();
+ try{const b64=await cpAudio(CP.file);CP.msg='📝 Jo bola gaya wo likha ja raha hai…';const e=$('#cpm');if(e)e.textContent=CP.msg;
+  const r=await fetch(CAP_ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({audio:b64,lang:CP.lang})});const d=await r.json().catch(()=>({}));if(!r.ok||d.error)throw new Error(d.error||'Server error '+r.status);
+  const L=cpMap(d.lines);if(!L.length){CP.msg='😶 Video me awaaz/bolna nahi mila.'}else{CP.lines=L;CP.msg='✅ '+L.length+' lines mili. Text ya ⏱ timing galat lage to edit karein.'}}
+ catch(e){CP.msg='❌ '+(e.message&&/decode|Unable/i.test(e.message)?'Is video ki awaaz padh nahi paye. MP4 (AAC) try karein.':(e.message||'Auto caption fail hui.'))}
+ CP.busy=false;if(view==='cap')render()}
+function cap(m){
+ document.fonts&&CPF.forEach(f=>document.fonts.load(`700 40px "${f}"`).catch(()=>{}));
+ const st=CP.st,ch=(arr,cur,key,lab)=>`<div class="chips">${arr.map(v=>`<span class="chip ${cur===(Array.isArray(v)?v[0]:v)?'on':''}" data-ck="${key}" data-v="${Array.isArray(v)?v[0]:v}">${lab?lab(v):(Array.isArray(v)?v[1]:v)}</span>`).join('')}</div>`;
+ const sw=(key,cur)=>`<div class="chips">${CPC.map(c=>`<span data-cs="${key}" data-v="${c}" style="width:32px;height:32px;border-radius:50%;background:${c};border:2px solid var(--bd);display:inline-block;${cur===c?'outline:3px solid var(--a)':''}"></span>`).join('')}</div>`;
+ m.innerHTML=`<button class="back" id="bk">← Back</button><h2>🎬 Caption Studio</h2>
+ <div class="card"><p class="mu" style="margin:0">Apni video me <b>Hindi / Hinglish / English</b> captions lagayein — 12 style presets, 8 fonts, 10 colours aur 10 animations. Original styles hain (CapCut ke asli templates nahi). <b>Note:</b> app video ki awaaz sun kar khud caption nahi likh sakta — aap script/topic dein, AI chhoti lines bana dega, aur ⏱ se timing set karein.</p></div>
+ <div class="row" style="margin-bottom:8px"><label class="btn" style="position:relative;flex:1;text-align:center;overflow:hidden">🎞️ ${CP.v?'Video badlein':'Video chunein'}<input type="file" id="cpf" accept="video/*" style="position:absolute;inset:0;width:100%;height:100%;opacity:0;font-size:0"></label></div>
+ <input type="file" id="cpf2" accept="video/*" style="margin-bottom:8px">
+ <canvas id="cpc" width="${CP.w}" height="${CP.h}" style="width:100%;max-height:62vh;object-fit:contain;border-radius:14px;background:#000"></canvas>
+ ${CP.v?`<div class="row" style="margin:8px 0"><button class="btn g" id="cpp" style="padding:8px 16px">▶/⏸</button><input type="range" id="cps" min="0" max="${CP.D||1}" step="0.1" value="0" style="margin:0;padding:0"><span id="cpt" class="mu" style="white-space:nowrap">0.0s</span></div>`:'<p class="mu">Video chunne se pehle sample caption par style dekh sakte hain.</p>'}
+ <h3>✍️ Captions</h3>
+ <button class="btn" id="cpau" style="width:100%;margin-bottom:8px" ${(CP.busy||!CP.v)?'disabled':''}>🎙️ Video ki awaaz se auto captions (jo bola wahi likhega)</button><p class="mu" style="margin-top:0">${CP.v?'Upar ki language (Hinglish / हिन्दी / English) me text likhega. Neeche script wala tarika sirf zaroorat par.':'Pehle video chunein, phir ye button chalega.'}</p>
+ <textarea id="cpsc" placeholder="${bi('Paste your script or topic…','Apna script ya topic yahan likhein (kisi bhi language me)…','अपनी स्क्रिप्ट या टॉपिक लिखें…')}">${esc(CP.script)}</textarea>
+ <div class="chips">${['Hinglish','हिन्दी','English'].map(l=>`<span class="chip ${CP.lang===l?'on':''}" data-cl="${l}">${l}</span>`).join('')}</div>
+ <div class="row"><button class="btn" id="cpai" style="flex:1" ${CP.busy?'disabled':''}>✨ AI captions</button><button class="btn g" id="cpsp" style="flex:1">✂️ Meri text se</button></div>
+ <div id="cpl" style="margin-top:10px">${CP.lines.map((l,i)=>`<div class="row" style="margin-bottom:6px"><input data-t="${i}" value="${esc(l.t)}" style="margin:0;flex:1"><input data-s="${i}" type="number" step="0.1" value="${l.s}" style="margin:0;width:70px"><button class="btn g" data-set="${i}" style="padding:8px">⏱</button><button class="btn g" data-del="${i}" style="padding:8px">🗑</button></div>`).join('')}<button class="btn g" id="cpad" style="width:100%">➕ Line jodein</button></div>
+ ${CP.v&&CP.lines.length?'<p class="mu">⏱ = video ko pause karke jis jagah caption dikhana hai wahan dabayein (start time set hota hai).</p>':''}
+ <h3>🎨 Style</h3><p class="mu">Presets</p>${ch(Object.keys(CPP),'', 'pre')}
+ <p class="mu">Font</p>${ch(CPF,st.font,'font')}<p class="mu">Text colour</p>${sw('fill',st.fill)}<p class="mu">Outline colour</p>${sw('stroke',st.stroke)}
+ <p class="mu">🌈 Words ka colour</p>${ch([['','Ek colour'],['two','2 colour (alternate)'],['rainbow','Rainbow']],st.mc||'','mc')}<p class="mu">Text colour 2 (dusra word)</p>${sw('fill2',st.fill2)}
+ <p class="mu">✨ Glow</p>${ch([['','Glow off'],['match','Text colour jaisa']],typeof st.glow==='string'&&st.glow[0]==='#'?'x':(st.glow||''),'glow')}<p class="mu">Ya glow ka colour chunein</p>${sw('glow',st.glow)}<p class="mu">Glow strength</p><input type="range" id="cpg" min="0.2" max="1.4" step="0.05" value="${st.gb||.55}">
+ <p class="mu">Animation</p>${ch(CPA,st.anim,'anim')}<p class="mu">Position</p>${ch([['top','Upar'],['mid','Beech'],['bottom','Neeche']],st.pos,'pos')}
+ <p class="mu">Size</p><input type="range" id="cpz" min="4" max="12" step="0.5" value="${st.size}"><div class="chips"><span class="chip ${st.box?'on':''}" data-tg="box">▭ Box</span><span class="chip ${st.up?'on':''}" data-tg="up">AA Capital</span></div>
+ <button class="btn" id="cpx" style="width:100%;margin-top:6px" ${CP.exp?'disabled':''}>🚀 Captioned video export karein</button>
+ <div class="card" style="margin-top:10px;${CP.msg||CP.res?'':'display:none'}"><div id="cpm" class="md">${esc(CP.msg)}</div><div id="cpr"></div></div>`;
+ $('#bk').onclick=()=>nav('studio');
+ const setV=f=>{if(!f)return;CP.file=f;const v=document.createElement('video');v.src=URL.createObjectURL(f);v.playsInline=true;v.preload='auto';v.onloadedmetadata=()=>{const k=Math.min(1,960/Math.max(v.videoWidth,v.videoHeight));CP.w=Math.round(v.videoWidth*k)||540;CP.h=Math.round(v.videoHeight*k)||960;CP.D=v.duration;if(CP.lines.length)cpEven(CP.lines.map(l=>l.t));CP.v=v;v.currentTime=0.01;render()};v.onerror=()=>{CP.msg='❌ Ye video khul nahi payi. MP4 try karein.';render()}};
+ $('#cpf').onchange=e=>setV(e.target.files[0]);$('#cpf2').onchange=e=>setV(e.target.files[0]);
+ const sc=$('#cpsc');const sy=()=>{if(sc)CP.script=sc.value};
+ const pp=$('#cpp');if(pp)pp.onclick=()=>{CP.v.paused?CP.v.play():CP.v.pause()};const sk=$('#cps');if(sk){sk.oninput=()=>{CP.seek=1;CP.v.currentTime=+sk.value};sk.onchange=()=>{CP.seek=0}}
+ m.querySelectorAll('[data-cl]').forEach(c=>c.onclick=()=>{sy();CP.lang=c.dataset.cl;render()});
+ $('#cpau').onclick=capAuto;$('#cpsp').onclick=()=>{sy();const a=cpSplit(CP.script);if(!a.length)return;cpEven(a);render()};
+ $('#cpai').onclick=async()=>{sy();if(!CP.script.trim())return;CP.busy=true;CP.msg='';render();try{const D=Math.round(CP.D||30),t=await ai(`Turn this script/topic into on-screen video captions in ${cpLn()}. Max 6 words per line, about ${Math.max(4,Math.round(D/2.5))} lines for a ${D}-second video, punchy and easy to read. Keep the meaning. Return ONLY a JSON array of strings.\n\n${CP.script}`);const a=JSON.parse(t.match(/\[[\s\S]*\]/)[0]).map(String).filter(Boolean);if(!a.length)throw 0;cpEven(a)}catch(e){CP.msg='⚠️ AI caption nahi bana paya. "✂️ Meri text se" try karein.'}CP.busy=false;render()};
+ m.querySelectorAll('[data-t]').forEach(i=>i.oninput=()=>{CP.lines[+i.dataset.t].t=i.value});
+ m.querySelectorAll('[data-s]').forEach(i=>i.onchange=()=>{CP.lines[+i.dataset.s].s=+i.value;CP.lines.sort((a,b)=>a.s-b.s);render()});
+ m.querySelectorAll('[data-set]').forEach(b=>b.onclick=()=>{if(!CP.v)return;CP.lines[+b.dataset.set].s=+CP.v.currentTime.toFixed(1);CP.lines.sort((a,b)=>a.s-b.s);render()});
+ m.querySelectorAll('[data-del]').forEach(b=>b.onclick=()=>{CP.lines.splice(+b.dataset.del,1);render()});
+ $('#cpad').onclick=()=>{CP.lines.push({t:'',s:CP.v?+CP.v.currentTime.toFixed(1):(CP.lines.length?CP.lines[CP.lines.length-1].s+2:0)});render()};
+ m.querySelectorAll('[data-ck]').forEach(c=>c.onclick=()=>{sy();const k=c.dataset.ck,v=c.dataset.v;if(k==='pre')CP.st={...CPP[v],size:CP.st.size,pos:CP.st.pos,up:CP.st.up,hl:CPP[v].hl||'#facc15',gb:CP.st.gb};else CP.st[k]=v;render()});
+ m.querySelectorAll('[data-cs]').forEach(c=>c.onclick=()=>{sy();CP.st[c.dataset.cs]=c.dataset.v;if(c.dataset.cs==='stroke'&&!CP.st.sw)CP.st.sw=.12;render()});
+ m.querySelectorAll('[data-tg]').forEach(c=>c.onclick=()=>{sy();const k=c.dataset.tg;if(k==='box')CP.st.box=CP.st.box?'':'#000000b3';else CP.st.up=!CP.st.up;render()});
+ $('#cpz').oninput=e=>{CP.st.size=+e.target.value};$('#cpg').oninput=e=>{CP.st.gb=+e.target.value};
+ $('#cpx').onclick=capExport;if(CP.res){$('#cpr').innerHTML=`<video src="${CP.res.url}" controls playsinline style="width:100%;border-radius:12px;margin-top:8px"></video><a class="btn" style="display:block;text-align:center;text-decoration:none;margin-top:8px" download="captioned-video.${CP.res.ext}" href="${CP.res.url}">⬇️ Download</a>`}
+ capLoop()}
+async function capExport(){const v=CP.v;if(!v){CP.msg='⚠️ Pehle video chunein.';return render()}if(!CP.lines.length){CP.msg='⚠️ Pehle captions banayein.';return render()}if(!window.MediaRecorder){CP.msg='❌ Is browser me export support nahi. Chrome use karein.';return render()}
+ CP.exp=true;CP.res=null;CP.msg=`🎬 Export ho raha hai (${Math.round(CP.D)} sec). Is screen par ruke rahein…`;render();
+ try{v.pause();v.currentTime=0;await new Promise(r=>{v.onseeked=()=>{v.onseeked=null;r()}});const cv=$('#cpc'),cs=cv.captureStream(30);let aud=true;try{const vs=(v.captureStream||v.mozCaptureStream).call(v);const at=vs.getAudioTracks();at.forEach(t=>cs.addTrack(t));if(!at.length)aud=false}catch(e){aud=false}
+  const mt=['video/webm;codecs=vp9,opus','video/webm','video/mp4'].find(x=>MediaRecorder.isTypeSupported(x)),ch=[],rec=new MediaRecorder(cs,{mimeType:mt,videoBitsPerSecond:3e6});rec.ondataavailable=e=>e.data.size&&ch.push(e.data);rec.start();
+  v.muted=false;await v.play();await new Promise(r=>{v.onended=r;v.onerror=r});const blob=await new Promise(r=>{rec.onstop=()=>r(new Blob(ch,{type:mt}));rec.stop()});const ext=mt.includes('mp4')?'mp4':'webm';
+  await vdb('readwrite',q=>q.put({id:'v'+Date.now(),prompt:'Captioned video',style:'Caption',ratio:'',dur:Math.round(CP.D),ts:Date.now(),blob,ext}));
+  CP.res={url:URL.createObjectURL(blob),ext};CP.msg='✅ Video taiyar!'+(aud?'':' (Is browser me awaaz save nahi hui — Chrome use karein.)')}catch(e){CP.msg='❌ Export fail: '+(e.message||'dobara try karein')}
+ CP.exp=false;if(view==='cap')render()}
 function saved(m){const r=ALL.filter(l=>S.fav.includes(l.id));
  m.innerHTML=`<h2>🔖 Saved & Progress</h2><div class="card"><b>${S.done.length}/${ALL.length}</b> lessons complete<div class="bar" style="margin-top:6px"><div style="width:${pct()}%"></div></div></div>${r.map(l=>`<div class="card" data-l="${l.id}" style="cursor:pointer">${l.cat.e} ${lt(l.t)} ${S.done.includes(l.id)?'✅':''}</div>`).join('')||'<p class="mu">Koi saved lesson nahi. Lesson me 🔖 Save dabayein.</p>'}`;
  m.querySelectorAll('[data-l]').forEach(c=>c.onclick=()=>nav('lesson',{id:c.dataset.l}))}
