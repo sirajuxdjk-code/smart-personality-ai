@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="theme-color" content="#4f46e5">
+<meta name="description" content="Smart Personality AI — personality, communication, confidence aur YouTube/Instagram/Facebook growth seekhein. Hindi, Hinglish, English.">
+<meta property="og:title" content="Smart Personality AI">
+<meta property="og:description" content="Bolna seekhein, confidence badhayein, aur social media par ethically grow karein — AI coach ke saath.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%234f46e5'/%3E%3Cstop offset='1' stop-color='%23c026d3'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='16' fill='url(%23g)'/%3E%3Ctext x='32' y='44' font-size='34' text-anchor='middle'%3E%E2%9C%A8%3C/text%3E%3C/svg%3E">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Smart Personality AI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f4f3ff;--card:#fff;--tx:#1b1740;--mu:#6b6890;--a:#4f46e5;--b:#9333ea;--bd:#e4e1fb;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f0d24;--card:#1a1740;--tx:#f0eeff;--mu:#a29fcf;--bd:#2c2862}}
+:root[data-theme="dark"]{--bg:#0f0d24;--card:#1a1740;--tx:#f0eeff;--mu:#a29fcf;--bd:#2c2862}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;height:100%;background:var(--bg);color:var(--tx);font-family:"Poppins","Noto Sans Devanagari",system-ui,-apple-system,Roboto,sans-serif}
+#app{height:100%;display:flex;flex-direction:column;max-width:560px;margin:auto}
+#main{flex:1;overflow-y:auto;padding:14px 14px 18px}
+.grad{background:linear-gradient(135deg,var(--a),var(--b));color:#fff}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:18px;padding:14px;margin-bottom:12px}
+h1,h2,h3{margin:0 0 8px}h2{font-size:20px}h3{font-size:16px}
+p{margin:0 0 8px;line-height:1.5}.mu{color:var(--mu);font-size:13px}
+button,input,textarea,select{font:inherit;color:inherit}
+.btn{border:0;border-radius:14px;padding:12px 16px;font-weight:600;color:#fff;background:linear-gradient(135deg,var(--a),var(--b));cursor:pointer}
+.btn.g{background:var(--card);color:var(--tx);border:1px solid var(--bd)}
+.btn:disabled{opacity:.5}
+input,textarea,select{width:100%;background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:12px;margin-bottom:8px}
+textarea{min-height:90px;resize:vertical}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.cat{border-radius:18px;padding:14px;color:#fff;min-height:110px;cursor:pointer;display:flex;flex-direction:column;justify-content:space-between}
+.cat b{font-size:15px}.cat span{font-size:30px}
+.row{display:flex;gap:8px;align-items:center}
+.chips{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px}
+.chip{border:1px solid var(--bd);background:var(--card);border-radius:20px;padding:7px 12px;font-size:13px;cursor:pointer}
+.chip.on{background:linear-gradient(135deg,var(--a),var(--b));color:#fff;border-color:transparent}
+nav{display:flex;background:var(--card);border-top:1px solid var(--bd);padding-bottom:env(safe-area-inset-bottom,0px)}
+nav button{flex:1;background:none;border:0;padding:8px 2px;font-size:11px;color:var(--mu);cursor:pointer}
+body.kb nav{display:none}
+nav button.on{color:var(--a);font-weight:700}nav i{display:block;font-style:normal;font-size:20px}
+.bub{padding:10px 13px;border-radius:16px;margin-bottom:8px;max-width:88%;white-space:pre-wrap;line-height:1.5;font-size:14.5px}
+.me{background:linear-gradient(135deg,var(--a),var(--b));color:#fff;margin-left:auto}
+.ai{background:var(--card);border:1px solid var(--bd)}
+.md{white-space:pre-wrap;line-height:1.6;font-size:14.5px}
+.bar{height:8px;background:var(--bd);border-radius:6px;overflow:hidden}.bar div{height:100%;background:linear-gradient(90deg,var(--a),var(--b))}
+.spin{width:18px;height:18px;border:3px solid var(--bd);border-top-color:var(--a);border-radius:50%;display:inline-block;animation:r 1s linear infinite;vertical-align:middle}
+@keyframes r{to{transform:rotate(360deg)}}@keyframes sl{from{margin-left:0}to{margin-left:60%}}
+#splash{position:fixed;inset:0;z-index:9;background:linear-gradient(160deg,#312e81,#6d28d9 60%,#a855f7);display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;transition:opacity .6s}
+#splash svg{animation:p 1.6s ease-in-out infinite}
+@keyframes p{50%{transform:scale(1.08)}}
+.err{color:#e11d48;font-size:13px}
+.back{background:none;border:0;font-size:15px;color:var(--a);padding:0 0 8px;cursor:pointer;font-weight:600}
+#main{min-height:0}
+#main>*{animation:up .35s cubic-bezier(.2,.8,.2,1) both}
+.btn,.card,.cat,.chip{transition:transform .15s,box-shadow .2s}.btn:active,.cat:active,.chip:active{transform:scale(.96)}.cat{box-shadow:0 8px 22px #4f46e540}
+.chatw{height:100%;display:flex;flex-direction:column;background:var(--bg)}
+.chead{display:flex;align-items:center;gap:10px;padding:10px 14px;background:var(--card);border-bottom:1px solid var(--bd);position:relative}
+.av{width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,var(--a),var(--b));display:flex;align-items:center;justify-content:center;color:#fff;font-size:20px;flex:none;box-shadow:0 4px 14px #7c3aed55}
+.av.s{width:30px;height:30px;font-size:15px}
+.dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:#22c55e;margin-right:5px}
+.ibtn{border:0;background:none;font-size:24px;color:var(--tx);padding:4px 10px;cursor:pointer}
+.cmenu{position:absolute;right:10px;top:58px;z-index:5;background:var(--card);border:1px solid var(--bd);border-radius:16px;padding:10px;width:270px;box-shadow:0 12px 32px #0003;animation:pop .18s ease}
+.chatlog{flex:1;overflow-y:auto;padding:14px 12px;display:flex;flex-direction:column;gap:10px}
+.msg{display:flex;gap:8px;align-items:flex-end;animation:up .35s cubic-bezier(.2,.8,.2,1)}
+.msg.user{justify-content:flex-end}
+.msg .bub{margin:0;max-width:82%;padding:11px 14px;border-radius:20px;line-height:1.55;font-size:15px;white-space:pre-wrap;word-break:break-word}
+.msg.user .bub{background:linear-gradient(135deg,var(--a),var(--b));color:#fff;border-bottom-right-radius:6px;box-shadow:0 6px 18px #6d28d94d}
+.msg.ai .bub{background:var(--card);border:1px solid var(--bd);border-bottom-left-radius:6px;box-shadow:0 4px 14px #0000000d}
+.typ{display:flex;gap:5px;padding:15px 16px!important}.typ i{width:8px;height:8px;border-radius:50%;background:var(--a);opacity:.4;animation:bn 1.2s infinite}.typ i:nth-child(2){animation-delay:.15s}.typ i:nth-child(3){animation-delay:.3s}
+@keyframes bn{0%,60%,100%{transform:translateY(0);opacity:.35}30%{transform:translateY(-6px);opacity:1}}
+@keyframes up{from{opacity:0;transform:translateY(14px) scale(.98)}to{opacity:1;transform:none}}
+@keyframes pop{from{opacity:0;transform:scale(.94)}to{opacity:1;transform:none}}
+@keyframes fl{50%{transform:translateY(-6px)}}
+.comp{display:flex;gap:8px;align-items:flex-end;padding:10px 12px;background:var(--card);border-top:1px solid var(--bd)}
+.comp textarea{flex:1;width:auto;margin:0;min-height:0;height:44px;resize:none;border-radius:22px;padding:11px 16px;max-height:120px;line-height:1.4}
+.send{flex:none;width:44px;height:44px;border-radius:50%;border:0;color:#fff;font-size:18px;background:linear-gradient(135deg,var(--a),var(--b));box-shadow:0 6px 16px #7c3aed66;cursor:pointer;transition:transform .15s}.send:active{transform:scale(.88)}
+.welcome{text-align:center;padding:24px 6px;animation:up .5s ease}.welcome .av{width:76px;height:76px;font-size:36px;margin:0 auto 12px;animation:fl 3s ease-in-out infinite}
+.qs{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:14px}
+.hero{position:relative;overflow:hidden;border-radius:26px;padding:20px;color:#fff;margin-bottom:14px;background:linear-gradient(120deg,#4338ca,#7c3aed,#c026d3,#4f46e5);background-size:300% 300%;animation:gs 9s ease infinite;box-shadow:0 14px 34px #6d28d94d}
+.hero:before,.hero:after{content:"";position:absolute;border-radius:50%;background:#ffffff1f;animation:fl 6s ease-in-out infinite}
+.hero:before{width:150px;height:150px;right:-40px;top:-50px}.hero:after{width:90px;height:90px;right:60px;bottom:-40px;animation-delay:1.5s}
+@keyframes gs{50%{background-position:100% 50%}}
+.hero h2{font-size:24px;margin:0 0 4px;position:relative}.hero p{position:relative;margin:0;opacity:.92;font-size:14px}
+.ring{position:absolute;right:18px;top:18px;z-index:1;text-align:center;font-size:11px;font-weight:600}.ring b{position:absolute;left:0;right:0;top:20px;font-size:14px}
+.qa{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:14px}
+.qt{background:var(--card);border:1px solid var(--bd);border-radius:20px;padding:12px 4px 10px;text-align:center;font-size:11.5px;font-weight:600;cursor:pointer;box-shadow:0 6px 16px #4f46e514;border-bottom-width:3px}
+.qt span{display:flex;width:44px;height:44px;margin:0 auto 6px;border-radius:15px;align-items:center;justify-content:center;font-size:22px;color:#fff;box-shadow:0 6px 14px #0003}
+.sec{display:flex;justify-content:space-between;align-items:center;margin:4px 2px 10px}.sec h3{margin:0;font-size:17px}
+.cat2{position:relative;overflow:hidden;border-radius:22px;padding:14px;color:#fff;min-height:128px;cursor:pointer;display:flex;flex-direction:column;justify-content:space-between;box-shadow:0 10px 24px #0000002e}
+.cat2:after{content:"";position:absolute;width:90px;height:90px;border-radius:50%;background:#ffffff26;right:-24px;top:-24px}
+.cat2 .e{font-size:34px;filter:drop-shadow(0 4px 6px #0004)}.cat2 b{font-size:14.5px;line-height:1.25}.cat2 i{font-style:normal;font-size:11.5px;opacity:.9}
+.pill{display:flex;align-items:center;gap:8px;background:var(--card);border:1px solid var(--bd);border-radius:26px;padding:4px 6px 4px 16px;margin-bottom:10px;box-shadow:0 6px 18px #4f46e514}
+.pill input{border:0;margin:0;background:none;padding:10px 0}.pill input:focus{outline:none}
+</style></head><body>
+<div id="splash">
+<svg width="130" height="130" viewBox="0 0 120 120"><defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#60a5fa"/><stop offset="1" stop-color="#e879f9"/></linearGradient></defs>
+<circle cx="60" cy="60" r="54" fill="#ffffff22" stroke="#fff" stroke-width="2"/>
+<circle cx="60" cy="42" r="17" fill="url(#lg)"/><path d="M28 92c4-22 18-30 32-30s28 8 32 30z" fill="url(#lg)"/>
+<path d="M88 22l3 7 7 3-7 3-3 7-3-7-7-3 7-3z" fill="#fff"/></svg>
+<h1 style="margin:14px 0 4px;font-size:30px">Smart Personality AI</h1>
+<div style="opacity:.85">Speak • Grow • Shine ✨</div>
+<div class="spin" style="margin-top:28px;border-color:#fff4;border-top-color:#fff"></div></div>
+<div id="app"><div id="main"></div>
+<nav id="nav"></nav></div>
+<script src="suraj.js"></script>
+<script>
+const $=s=>document.querySelector(s);
+const LS={get(k,d){try{const v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
+let S=LS.get('spai',{lang:'Hinglish',other:'',level:'Beginner',goal:'',done:[],fav:[],hist:[],name:'',plan:null,theme:'auto'});
+const save=()=>LS.set('spai',S);
+function archive(){if(!S.hist||!S.hist.length)return;const u=S.hist.find(m=>m.role==='user');if(!u)return;if(!S.cid)S.cid='c'+Date.now();S.chats=S.chats||[];const o={id:S.cid,ts:Date.now(),title:u.content.slice(0,60),msgs:S.hist.slice()},i=S.chats.findIndex(c=>c.id===S.cid);if(i>=0)S.chats[i]=o;else S.chats.unshift(o);S.chats=S.chats.slice(0,50);save()}
+S.chats=S.chats||[];if(S.hist&&S.hist.length)archive();if(S.clr!==false){S.hist=[];S.cid=null;save()}
+const LANGS=['Hinglish','हिन्दी','English','Other'];
+const T={home:{Hinglish:'Home',हिन्दी:'होम',English:'Home'},chat:{Hinglish:'AI Coach',हिन्दी:'AI कोच',English:'AI Coach'},studio:{Hinglish:'Studio',हिन्दी:'स्टूडियो',English:'Studio'},saved:{Hinglish:'Saved',हिन्दी:'सेव',English:'Saved'},me:{Hinglish:'Profile',हिन्दी:'प्रोफ़ाइल',English:'Profile'},
+search:{Hinglish:'Lesson ya topic search karein…',हिन्दी:'पाठ या विषय खोजें…',English:'Search lessons or topics…'},
+hi:{Hinglish:'Namaste',हिन्दी:'नमस्ते',English:'Hello'},cats:{Hinglish:'Seekhne ki categories',हिन्दी:'सीखने की श्रेणियाँ',English:'Learning categories'}};
+const L=()=>S.lang==='Other'?'English':S.lang;
+const tr=k=>(T[k]&&T[k][L()])||T[k].English;
+const langName=()=>S.lang==='Other'?(S.other||'English'):S.lang==='Hinglish'?'Hinglish (Hindi written in English letters)':S.lang==='हिन्दी'?'Hindi (Devanagari)':'English';
+const CATS=[
+{id:'p',e:'🌟',c:'#4f46e5,#7c3aed',n:{Hinglish:'Personality Development',हिन्दी:'व्यक्तित्व विकास',English:'Personality Development'},ls:[['First impression kaise banayein','पहली छाप कैसे बनाएँ','Make a great first impression'],['Body language, eye contact & smile','बॉडी लैंग्वेज और मुस्कान','Body language, eye contact & smile'],['Friendly & approachable banna','मिलनसार कैसे बनें','Become friendly & approachable'],['Positive mindset & good habits','सकारात्मक सोच और आदतें','Positive mindset & good habits']]},
+{id:'c',e:'💬',c:'#2563eb,#4f46e5',n:{Hinglish:'Communication Skills',हिन्दी:'संवाद कौशल',English:'Communication Skills'},ls:[['Ajnabi se baat shuru karna','अजनबी से बातचीत शुरू करें','Start conversations with strangers'],['Dost, family, teacher se baat','दोस्त, परिवार, शिक्षक से बात','Talk to friends, family, teachers'],['Politely & clearly bolna','विनम्र और स्पष्ट बोलना','Speak politely and clearly'],['Dhyan se sunna & jawab dena','ध्यान से सुनना और जवाब देना','Listen carefully and respond']]},
+{id:'f',e:'🎤',c:'#7c3aed,#c026d3',n:{Hinglish:'Confidence Coach',हिन्दी:'आत्मविश्वास कोच',English:'Confidence Coach'},ls:[['Ghabrahat aur darr kaise kam karein','घबराहट कैसे कम करें','Manage nervousness & fear'],['Public speaking & camera confidence','पब्लिक स्पीकिंग और कैमरा','Public speaking & camera confidence'],['Interview & self-introduction','इंटरव्यू और परिचय','Interview & self-introduction'],['Daily speaking challenge','रोज़ की बोलने की चुनौती','Daily speaking challenge']]},
+{id:'y',e:'▶️',c:'#dc2626,#9333ea',n:{Hinglish:'YouTube Growth',हिन्दी:'YouTube ग्रोथ',English:'YouTube Growth'},ls:[['Zero se channel shuru karna','ज़ीरो से चैनल शुरू करें','Start a channel from zero'],['Niche, naam & description','नीश, नाम और विवरण','Niche, name & description'],['Shorts: hook, script, title, thumbnail','शॉर्ट्स: हुक, स्क्रिप्ट, थंबनेल','Shorts: hooks, scripts, titles, thumbnails'],['Watch time, retention & Analytics','वॉच टाइम और एनालिटिक्स','Watch time, retention & Analytics'],['Content calendar banana','कंटेंट कैलेंडर','Build a content calendar']]},
+{id:'i',e:'📸',c:'#db2777,#7c3aed',n:{Hinglish:'Instagram Growth',हिन्दी:'इंस्टाग्राम ग्रोथ',English:'Instagram Growth'},ls:[['Profile & bio optimize karna','प्रोफ़ाइल और बायो','Optimize profile & bio'],['Reels, captions & content plan','रील्स, कैप्शन, प्लान','Reels, captions & content plan'],['Insights samajhna','इनसाइट्स समझें','Understand Insights'],['Authentic audience banana','सच्ची ऑडियंस बनाएँ','Build an authentic audience']]},
+{id:'b',e:'👍',c:'#1d4ed8,#6366f1',n:{Hinglish:'Facebook Growth',हिन्दी:'फेसबुक ग्रोथ',English:'Facebook Growth'},ls:[['Facebook Page banana & optimize','पेज बनाएँ और सुधारें','Create & optimize a Page'],['Reels & engaging posts','रील्स और पोस्ट','Reels & engaging posts'],['Professional mode & insights','प्रोफ़ेशनल मोड, इनसाइट्स','Professional mode & insights'],['Reach & engagement badhana','रीच और एंगेजमेंट','Improve reach & engagement']]}];
+const LI=['Hinglish','हिन्दी','English'];
+const lt=a=>a[LI.indexOf(L())];
+const ALL=[];CATS.forEach(c=>c.ls.forEach((l,i)=>ALL.push({id:c.id+i,cat:c,t:l})));
+const SYS=()=>`Your name is Smart Personality AI (built by the Smart Personality AI team). Say your name only if the user asks who you are; never begin a reply with your name or an introduction. Do not mention any underlying AI model or company name; if asked which model or company is behind you, say you are Smart Personality AI and don't share technical details. Never claim to be human. You are a friendly expert coach for personality, communication, confidence, public speaking, and ethical growth on YouTube, Instagram and Facebook. Reply in ${langName()} unless the user writes in another language (then match them). Give detailed step-by-step answers with examples; include real conversation examples when relevant. User level: ${S.level}. User goal: ${S.goal||'not set'}. Never promise guaranteed followers, views or viral videos; recommend only ethical, platform-policy-friendly tactics; say that results vary and Analytics should guide decisions. Be warm, practical, accurate. Use plain text with short numbered steps (no markdown symbols like ** or ###).`;
+/* ====== AI SETUP ======
+ Paste your Cloudflare Worker URL below (see README steps). The secret API key lives ONLY in the Worker, never in this file. */
+const AI_ENDPOINT='https://smart-ai.sirajuxdjk.workers.dev'; // Worker from ai-worker.js (key stays on the server)
+const CSYS=()=>SYS()+(S.hist.some(h=>h.role==='assistant')?`\n\nNAME RULE: Do NOT use the user's name and do not greet again; just answer.`:(S.name?`\n\nNAME RULE: The user's name is ${S.name}. In this FIRST reply only, start with a quick greeting using their name once (like "Hi ${S.name}!"), then answer. Never use the name again later.`:`\n\nNAME RULE: Do not greet with a name.`))+`\n\nCHAT STYLE (this overrides any earlier instruction about length or detail): Talk like a warm, friendly human tutor on a chat app, not a textbook. Match the length to the question. Greetings, yes/no and simple questions get 1-3 short sentences. For broad questions (for example "will you teach me English?") answer in 2-3 friendly lines and ask ONE simple question (their level or goal) so the chat continues. Teach one small step or one example at a time. Do NOT dump long lists, headings or a full course unless the user clearly asks for detail ("step by step", "detail me", "explain fully"). Default under 70 words; when more is possible, end with a short offer like "Aur detail chahiye?". Short paragraphs, at most one emoji, no markdown symbols.`;
+let sample=null;
+if(window.claude){(async()=>{try{sample=await claude.use('sample')}catch(e){}})()}
+async function ai(input,onText){
+ const msgs=typeof input==='string'?[{role:'user',content:input}]:input;
+ if(AI_ENDPOINT){
+  try{
+   const r=await fetch(AI_ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({messages:msgs,stream:!!onText})});
+   if(!r.ok){let m='';try{m=(await r.json()).error}catch(_){}throw Object.assign(new Error(m||(r.status===429?'Bahut zyada requests. Thodi der baad try karein.':'AI server error ('+r.status+')')),{srv:1})}
+   if((r.headers.get('content-type')||'').includes('text/event-stream')&&r.body){
+    const rd=r.body.getReader(),dec=new TextDecoder();let buf='',acc='';
+    for(;;){const {done,value}=await rd.read();if(done)break;buf+=dec.decode(value,{stream:true});const ls=buf.split('\n');buf=ls.pop();
+     for(const l of ls){if(!l.startsWith('data:'))continue;let j;try{j=JSON.parse(l.slice(5))}catch(_){continue}
+      if(j.type==='content_block_delta'&&j.delta&&j.delta.text){acc+=j.delta.text;onText(acc)}else if(j.type==='error')throw Object.assign(new Error((j.error&&j.error.message)||'Stream error'),{srv:1})}}
+    if(!acc)throw Object.assign(new Error('Khali jawab aaya. Dobara try karein.'),{srv:1});return acc}
+   const d=await r.json();if(d.error)throw Object.assign(new Error(d.error),{srv:1});if(onText)onText(d.text);return d.text;
+  }catch(e){if(e.srv)throw e;if(!window.claude)throw new Error('AI server se connect nahi ho paya. Internet aur Worker URL check karein.')}
+ }
+ if(!sample&&window.claude)try{sample=await claude.use('sample')}catch(e){}
+ if(!sample)throw new Error('AI abhi connect nahi hai. Worker (ai-worker.js) deploy karke AI_ENDPOINT me URL daalein.');
+ const r=await sample(msgs,{cache:false,onText:x=>onText&&onText(x.text)});return r.text;
+}
+let view='home',ctx={},busy=false;
+function nav(v,c){view=v;ctx=c||{};render();$('#main').scrollTop=0}
+function esc(s){return String(s).replace(/[&<>"]/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m]))}
+function renderNav(){const it=[['home','🏠'],['chat','🤖'],['studio','🎨'],['saved','🔖'],['me','👤']];
+$('#nav').innerHTML=it.map(([k,i])=>`<button class="${view===k?'on':''}" data-n="${k}"><i>${i}</i>${tr(k)}</button>`).join('');
+$('#nav').querySelectorAll('button').forEach(b=>b.onclick=()=>nav(b.dataset.n))}
+function langChips(){return `<div class="chips">${LANGS.map(l=>`<span class="chip ${S.lang===l?'on':''}" data-lg="${l}">${l==='Other'?'🌐 Other':l}</span>`).join('')}</div>${S.lang==='Other'?`<input id="oth" placeholder="Language (Tamil, Bengali, Spanish…)" value="${esc(S.other)}">`:''}`}
+function bindLang(){document.querySelectorAll("[data-lg]").forEach(c=>c.onclick=()=>{S.lang=c.dataset.lg;save();render()});const o=$('#oth');if(o)o.oninput=()=>{S.other=o.value;save()}}
+const pct=()=>Math.round(S.done.length/ALL.length*100);
+function render(){renderNav();const m=$('#main');m.style.cssText='';({home,cat,lesson,chat,studio,saved,me,plan,search,vgen,photo,suraj,hist})[view](m);bindLang()}
+function home(m){
+ const ct=c=>ALL.filter(l=>l.cat.id===c.id).length;
+ m.innerHTML=`<div class="hero"><div class="ring"><svg width="64" height="64" viewBox="0 0 36 36"><circle cx="18" cy="18" r="15.9155" fill="none" stroke="#ffffff40" stroke-width="3"/><circle cx="18" cy="18" r="15.9155" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-dasharray="${pct()} 100" transform="rotate(-90 18 18)"/></svg><b>${pct()}%</b></div>
+ <h2>${tr('hi')}${S.name?' '+esc(S.name):''} 👋</h2><p style="max-width:70%">${S.goal?'🎯 '+esc(S.goal):bi('Aaj kya seekhna hai?','Aaj kya seekhna hai?','आज क्या सीखना है?')}</p><p style="margin-top:10px;font-size:12.5px">${S.done.length}/${ALL.length} lessons complete</p></div>
+ <div class="pill">🔍<input id="q" placeholder="${tr('search')}"></div>
+ ${langChips()}
+ <div class="qa">${[['hc','💬','AI Chat','#6366f1,#8b5cf6'],['hv','🎥','Video','#ec4899,#8b5cf6'],['hp','📸','Photo','#f59e0b,#ec4899'],['hs','','Suraj','#f59e0b,#dc2626']].map(([id,e,n,c])=>id==='hs'?`<div class="qt" id="hs" style="display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:700;color:#fff;border:0;background:linear-gradient(135deg,${c})">${n}</div>`:`<div class="qt" id="${id}"><span style="background:linear-gradient(135deg,${c})">${e}</span>${n}</div>`).join('')}</div>
+ <div class="row" style="margin-bottom:14px"><button class="btn" style="flex:1" id="bp">📅 7/30-Day Plan</button><button class="btn g" style="flex:1" id="bd">⚡ Daily Task</button></div>
+ <div class="sec"><h3>${tr('cats')}</h3></div><div class="grid">${CATS.map(c=>`<div class="cat2" style="background:linear-gradient(135deg,${c.c})" data-c="${c.id}"><span class="e">${c.e}</span><div><b>${c.n[L()]||c.n.English}</b><br><i>${ct(c)} lessons</i></div></div>`).join('')}</div>
+ <div class="card" style="margin-top:14px"><b>⚡ ${bi("Today's task",'Aaj ka task','आज का टास्क')}</b><div id="dt" class="md mu" style="margin-top:6px">Tap ⚡ Daily Task for today's speaking challenge.</div></div>
+ <p class="mu" style="text-align:center">Smart Personality AI educational guidance deta hai. Social media growth ki koi guarantee nahi hoti.</p>`;
+ $('#q').onkeydown=e=>{if(e.key==='Enter'&&e.target.value.trim())nav('search',{q:e.target.value.trim()})};
+ m.querySelectorAll('[data-c]').forEach(c=>c.onclick=()=>nav('cat',{id:c.dataset.c}));
+ $('#bp').onclick=()=>nav('plan');$('#hv').onclick=()=>nav('vgen');$('#hs').onclick=()=>nav('suraj');$('#hc').onclick=()=>nav('chat');$('#hp').onclick=()=>nav('photo');
+ $('#bd').onclick=async()=>{const d=$('#dt');d.innerHTML='<span class="spin"></span> Creating…';try{d.className='md';d.textContent=await ai(`Give ONE short daily task for today (a speaking, confidence or social-media exercise) for a ${S.level} learner: 3 short steps and a 1-line quiz question with its answer. Reply in ${langName()}. Day seed ${new Date().toDateString()}.`,x=>d.textContent=x)}catch(e){d.innerHTML=`<span class="err">${esc(e.message||'Error')}</span>`}}}
+function search(m){const q=ctx.q.toLowerCase();const r=ALL.filter(l=>l.t.join(' ').toLowerCase().includes(q)||l.cat.n.English.toLowerCase().includes(q));
+ m.innerHTML=`<button class="back" id="bk">← Back</button><h2>🔍 "${esc(ctx.q)}"</h2>${r.map(l=>`<div class="card" data-l="${l.id}" style="cursor:pointer">${l.cat.e} ${lt(l.t)}</div>`).join('')||'<p class="mu">No lesson found.</p>'}<button class="btn" id="as">🤖 Ask AI Coach</button>`;
+ $('#bk').onclick=()=>nav('home');$('#as').onclick=()=>nav('chat',{pre:ctx.q});m.querySelectorAll('[data-l]').forEach(c=>c.onclick=()=>nav('lesson',{id:c.dataset.l}))}
+function cat(m){const c=CATS.find(x=>x.id===ctx.id);
+ m.innerHTML=`<button class="back" id="bk">← Back</button><div class="card grad" style="background:linear-gradient(135deg,${c.c})"><h2>${c.e} ${c.n[L()]||c.n.English}</h2></div>
+ ${c.ls.map((l,i)=>`<div class="card row" data-l="${c.id+i}" style="cursor:pointer"><div style="flex:1"><b>${lt(l)}</b><div class="mu">${S.done.includes(c.id+i)?'✅ Completed':S.level}</div></div><span>${S.fav.includes(c.id+i)?'🔖':'›'}</span></div>`).join('')}`;
+ $('#bk').onclick=()=>nav('home');m.querySelectorAll('[data-l]').forEach(x=>x.onclick=()=>nav('lesson',{id:x.dataset.l}))}
+const cache={};
+function lesson(m){const l=ALL.find(x=>x.id===ctx.id);const key=l.id+S.lang+S.other+S.level;
+ m.innerHTML=`<button class="back" id="bk">← ${l.cat.n.English}</button><h2>${l.cat.e} ${lt(l.t)}</h2>
+ ${langChips()}
+ <div class="chips">${['Beginner','Intermediate','Advanced'].map(v=>`<span class="chip ${S.level===v?'on':''}" data-v="${v}">${v}</span>`).join('')}</div>
+ <div class="card"><div id="body" class="md"><span class="spin"></span> Lesson ban raha hai…</div></div>
+ <div class="row"><button class="btn g" id="fv" style="flex:1">${S.fav.includes(l.id)?'🔖 Saved':'🔖 Save'}</button><button class="btn" id="dn" style="flex:1">${S.done.includes(l.id)?'✅ Done':'Mark complete'}</button></div>
+ <div class="row" style="margin-top:8px"><button class="btn g" id="qz" style="flex:1">🧠 Quiz</button><button class="btn g" id="ak" style="flex:1">💬 Ask doubt</button></div><div id="ex"></div>`;
+ $('#bk').onclick=()=>nav('cat',{id:l.cat.id});
+ m.querySelectorAll('[data-v]').forEach(c=>c.onclick=()=>{S.level=c.dataset.v;save();render()});
+ $('#fv').onclick=()=>{S.fav=S.fav.includes(l.id)?S.fav.filter(x=>x!==l.id):[...S.fav,l.id];save();render()};
+ $('#dn').onclick=()=>{if(!S.done.includes(l.id))S.done.push(l.id);save();render()};
+ $('#ak').onclick=()=>nav('chat',{pre:`Mujhe is lesson me doubt hai: ${l.t[2]}`});
+ const run=async(p,el,k)=>{el.innerHTML='<span class="spin"></span>';try{const t=await ai(p,x=>el.textContent=x);if(k)cache[k]=t}catch(e){el.innerHTML=`<span class="err">⚠️ ${esc(e.message||'Error')}</span> <button class="btn g" id="rt">Retry</button>`;$('#rt').onclick=()=>run(p,el,k)}};
+ const b=$('#body');
+ if(cache[key])b.textContent=cache[key];else run(`${SYS()}\n\nWrite a complete ${S.level} lesson on: "${l.t[2]}". Structure: 1) Why it matters 2) Step-by-step method 3) Real examples${l.cat.id==='c'||l.cat.id==='f'?' (conversation examples in both Hindi/Hinglish and English)':''} 4) Common mistakes 5) Today's practice task. Keep under 450 words.`,b,key);
+ $('#qz').onclick=()=>run(`${SYS()}\n\nCreate a 4-question multiple-choice quiz on "${l.t[2]}" for ${S.level} level. Put the answer key at the end.`,$('#ex'))}
+function chat(m){
+ m.style.cssText='padding:0;overflow:hidden';
+ m.innerHTML=`<div class="chatw"><div class="chead"><div class="av">✨</div><div style="flex:1;min-width:0"><b>Smart Personality AI</b><div class="mu" style="font-size:12px"><span class="dot"></span>Online • Hindi • Hinglish • English</div></div><button class="ibtn" id="dots">⋮</button>
+ <div id="cmenu" class="cmenu" style="display:none"><button class="btn g" id="cn" style="width:100%;margin-bottom:6px">➕ New chat</button><button class="btn g" id="chs" style="width:100%">🕘 History (${(S.chats||[]).length})</button><p class="mu" style="margin:8px 0 0">Refresh par chat clear: <b>${S.clr!==false?'ON':'OFF'}</b> (Profile → Settings). History me purani baatein safe rehti hain.</p></div></div>
+ <div id="log" class="chatlog"></div>
+ <div class="comp"><textarea id="in" rows="1" placeholder="${bi('Type your question…','Apna sawal likhein…','अपना सवाल लिखें…')}"></textarea><button id="sd" class="send">➤</button></div></div>`;
+ const log=$('#log'),inp=$('#in');
+ const bub=(r,t)=>`<div class="msg ${r==='user'?'user':'ai'}">${r==='user'?'':'<div class="av s">✨</div>'}<div class="bub">${esc(t)}</div></div>`;
+ const down=()=>{log.scrollTop=log.scrollHeight};
+ const draw=()=>{if(!S.hist.length){log.innerHTML=`<div class="welcome"><div class="av">✨</div><h3 style="margin:0 0 4px">${bi('Hi','Hii','हाय')}${S.name?' '+esc(S.name):''} 👋</h3><p class="mu">${bi('Ask me anything — English, confidence, YouTube, Instagram…','Kuch bhi poochhein — English, confidence, YouTube, Instagram…','कुछ भी पूछें — इंग्लिश, कॉन्फिडेंस, YouTube, Instagram…')}</p>${S.name?'':`<div class="row" style="margin-top:10px"><input id="nm0" placeholder="${bi('Your name?','Aapka naam?','आपका नाम?')}" style="margin:0"><button class="btn" id="nm1">Save</button></div>`}<div class="qs">${['Kya tum English sikhaoge?','Camera ke samne confident kaise banun?','YouTube channel kaise shuru karun?','Instagram bio kaise likhun?'].map(q=>`<span class="chip" data-s="${esc(q)}">${esc(q)}</span>`).join('')}</div></div>`;log.querySelectorAll('[data-s]').forEach(c=>c.onclick=()=>send(c.dataset.s));const n1=$('#nm1');if(n1)n1.onclick=()=>{const v=$('#nm0').value.trim();if(v){S.name=v;save();draw()}}}else{log.innerHTML=S.hist.map(h=>bub(h.role,h.content)).join('');down()}};
+ draw();
+ if(ctx.pre){inp.value=ctx.pre;ctx.pre=''}
+ const H=()=>{const h=S.hist.slice(-10);while(h.length&&h[0].role!=='user')h.shift();return h};
+ const send=async(txt)=>{const v=(txt||inp.value).trim();if(!v||busy)return;busy=true;inp.value='';inp.style.height='44px';
+  S.hist.push({role:'user',content:v});draw();
+  log.insertAdjacentHTML('beforeend','<div class="msg ai" id="tp"><div class="av s">✨</div><div class="bub typ"><i></i><i></i><i></i></div></div>');down();
+  const row=$('#tp'),b=row.querySelector('.bub');
+  const msgs=[{role:'user',content:CSYS()+'\n\nConversation starts. Follow the above rules.'},{role:'assistant',content:'Samajh gaya.'},...H()];
+  try{const t=await ai(msgs,x=>{b.classList.remove('typ');b.textContent=x;down()});b.classList.remove('typ');b.textContent=t;S.hist.push({role:'assistant',content:t});archive();save()}
+  catch(e){S.hist.pop();save();b.classList.remove('typ');b.innerHTML=`⚠️ ${esc(e.message||'Kuch gadbad hui.')}<br><button class="btn g" id="rt" style="margin-top:8px;padding:8px 14px">🔁 Dobara try karein</button>`;$('#rt').onclick=()=>{row.remove();send(v)}}
+  busy=false};
+ $('#sd').onclick=()=>send();
+ inp.onkeydown=e=>{if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();send()}};
+ inp.oninput=()=>{inp.style.height='44px';inp.style.height=Math.min(120,inp.scrollHeight)+'px'};
+ $('#dots').onclick=()=>{const c=$('#cmenu');c.style.display=c.style.display==='none'?'block':'none'};
+ $('#cn').onclick=()=>{S.hist=[];S.cid=null;save();render()};$('#chs').onclick=()=>nav('hist')}
+function studio(m){
+ m.innerHTML=`<h2>🎨 Prompt Studio</h2><button class="btn" id="vg" style="width:100%;margin-bottom:8px">🎥 AI Video Generator</button><button class="btn g" id="ph2" style="width:100%;margin-bottom:12px">📸 Premium Photo Studio</button><div class="card"><p class="mu"><b>🎞️ Make 20s Video</b>: app khud 20-second ki vertical video banata hai (animated text + colours, Reels/Shorts style) aur download karne deta hai. Yeh motion-graphics video hai, photorealistic AI video nahi. Photo ya realistic video ke liye <b>Photo/Video Prompt</b> banakar free tools (Bing Image Creator, Meta AI, Google Veo, CapCut) me paste karein.</p></div>
+ <div class="chips"><span class="chip on" data-k="Photo">📷 Photo</span><span class="chip" data-k="Video">🎬 Video Prompt</span><span class="chip" data-k="Reel">🎞️ Make 20s Video</span></div><label class="mu" style="display:block;margin-bottom:8px"><input type="checkbox" id="vo" style="width:auto;margin:0 6px 0 0">🔊 Voiceover (preview ke time bolega, file me save nahi hota)</label>
+ <textarea id="idea" placeholder="Idea likhein: e.g. YouTube thumbnail for 'Confidence kaise badhayein', blue-purple style"></textarea>
+ <button class="btn" id="go" style="width:100%">✨ Generate Prompt</button><div class="card" style="margin-top:12px"><div id="out" class="md mu">Result yahan aayega.</div><div id="vid"></div></div><button class="btn g" id="cp">📋 Copy</button>`;
+ $('#vg').onclick=()=>nav('vgen');$('#ph2').onclick=()=>nav('photo');let k='Photo';m.querySelectorAll('[data-k]').forEach(c=>c.onclick=()=>{k=c.dataset.k;m.querySelectorAll('[data-k]').forEach(x=>x.classList.toggle('on',x===c))});
+ $('#cp').onclick=async()=>{try{await navigator.clipboard.writeText($('#out').textContent);$('#cp').textContent='✅ Copied'}catch(e){$('#cp').textContent='Select & copy manually'}};
+ $('#go').onclick=async()=>{const v=$('#idea').value.trim();if(!v)return;const o=$('#out');o.className='md';o.innerHTML='<span class="spin"></span>';$('#go').disabled=true;if(k==='Reel'){await makeVideo(v,o);$('#go').disabled=false;return}
+  try{await ai(k==='Photo'?`Write a detailed English image-generation prompt (subject, style, lighting, camera, colors, mood, aspect ratio, negative prompt) for: ${v}. Then add 2 variations. Do not include real people's likeness of celebrities.`:`Create a 20-second video plan for: ${v}. Give: a 4-scene storyboard (0-5s,5-10s,10-15s,15-20s) with visuals, voiceover in ${langName()}, on-screen text, music mood, plus one ready-to-paste English text-to-video prompt.`,x=>o.textContent=x)}catch(e){o.innerHTML=`<span class="err">⚠️ ${esc(e.message)}</span>`}$('#go').disabled=false}}
+
+/* ====== 20-SECOND VIDEO MAKER (canvas + MediaRecorder, free, runs in browser) ====== */
+const PAL=[['#312e81','#7c3aed'],['#1d4ed8','#9333ea'],['#be185d','#6d28d9'],['#0f766e','#4f46e5']];
+function localScenes(idea){const e=['🎯','💡','✅','🚀'];const h=['Rukiye! '+idea,'Sabse pehla step','Yeh try karein','Aaj se shuru karein'];const t=['Yeh jaanna zaroori hai','Chhote step, roz practice','Consistency hi asli key hai','Follow karein aur practice karein'];return h.map((x,i)=>({h:x,t:t[i],e:e[i],a:PAL[i][0],b:PAL[i][1]}))}
+function wrap(c,txt,x,y,mw,lh){const w=String(txt).split(' ');let l='',ls=[];w.forEach(k=>{const tt=l?l+' '+k:k;if(c.measureText(tt).width>mw&&l){ls.push(l);l=k}else l=tt});ls.push(l);ls.forEach((q,i)=>c.fillText(q,x,y+i*lh));return ls.length*lh}
+function frame(c,W,H,t,sc){const i=Math.min(3,Math.floor(t/5)),lt=t-i*5,s=sc[i];
+ const g=c.createLinearGradient(0,0,W,H);g.addColorStop(0,s.a);g.addColorStop(1,s.b);c.fillStyle=g;c.fillRect(0,0,W,H);
+ for(let k=0;k<4;k++){c.fillStyle='rgba(255,255,255,0.07)';c.beginPath();c.arc(W*(0.2+0.2*k)+Math.sin(t*0.8+k)*40,H*(0.2+0.2*k)+Math.cos(t*0.6+k)*50,90+k*30,0,7);c.fill()}
+ const fi=Math.min(1,lt/0.6),fo=Math.min(1,(5-lt)/0.4),al=Math.max(0,Math.min(fi,fo)),sl=(1-fi)*60;
+ c.globalAlpha=al;c.textAlign='center';c.fillStyle='#fff';
+ const pop=1+Math.max(0,0.3-lt)*1.2;c.font=`${Math.round(W*0.24*pop)}px sans-serif`;c.fillText(s.e||'✨',W/2,H*0.30+sl);
+ c.font=`800 ${Math.round(W*0.095)}px system-ui,sans-serif`;const hh=wrap(c,s.h,W/2,H*0.46+sl,W*0.84,W*0.115);
+ c.font=`${Math.round(W*0.055)}px system-ui,sans-serif`;c.fillStyle='#ffffffdd';wrap(c,s.t,W/2,H*0.46+hh+W*0.08+sl,W*0.8,W*0.07);
+ c.globalAlpha=1;c.fillStyle='#ffffff33';c.fillRect(W*0.08,H*0.93,W*0.84,6);c.fillStyle='#fff';c.fillRect(W*0.08,H*0.93,W*0.84*t/20,6);
+ c.font=`600 ${Math.round(W*0.04)}px system-ui,sans-serif`;c.fillStyle='#ffffffaa';c.fillText('Smart Personality AI',W/2,H*0.97)}
+let videoBusy=false;
+async function makeVideo(idea,o){
+ if(videoBusy)return;videoBusy=true;const box=$('#vid');box.innerHTML='';
+ let sc;o.innerHTML='<span class="spin"></span> Script ban rahi hai…';
+ try{const t=await ai(`Return ONLY a JSON array of exactly 4 objects, no other text. Each: {"h":"headline max 6 words in ${langName()}","t":"supporting line max 12 words in ${langName()}","e":"one emoji","a":"dark hex color","b":"vivid hex color"}. A 20-second vertical video about: ${idea}. Scene1 = strong hook, scene2 = key point, scene3 = practical tip, scene4 = call to action. No guaranteed-results claims.`);
+  sc=JSON.parse(t.match(/\[[\s\S]*\]/)[0]).slice(0,4);if(sc.length<4)throw 0}catch(e){sc=localScenes(idea)}
+ const W=540,H=960,cv=document.createElement('canvas');cv.width=W;cv.height=H;cv.style.cssText='width:100%;border-radius:14px;background:#000';box.appendChild(cv);
+ const c=cv.getContext('2d');let rec=null,ch=[];const mt=['video/webm;codecs=vp9','video/webm','video/mp4'].find(x=>window.MediaRecorder&&MediaRecorder.isTypeSupported(x));
+ if(mt){try{rec=new MediaRecorder(cv.captureStream(30),{mimeType:mt,videoBitsPerSecond:2500000});rec.ondataavailable=e=>e.data.size&&ch.push(e.data);rec.start()}catch(e){rec=null}}
+ o.className='md';o.textContent='🎬 Video ban rahi hai (20 sec). Is screen par ruke rahein…';
+ const voice=$('#vo')&&$('#vo').checked&&window.speechSynthesis;let last=-1;const t0=performance.now();
+ await new Promise(res=>{(function loop(){const t=(performance.now()-t0)/1000;if(t>=20){frame(c,W,H,19.99,sc);return res()}
+  const i=Math.floor(t/5);if(voice&&i!==last){last=i;try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(sc[i].h+'. '+sc[i].t);u.lang=(S.lang==='English')?'en-US':'hi-IN';speechSynthesis.speak(u)}catch(e){}}
+  frame(c,W,H,t,sc);requestAnimationFrame(loop)})()});
+ try{speechSynthesis.cancel()}catch(e){}
+ const finish=url=>{box.innerHTML=`<video src="${url}" controls playsinline style="width:100%;border-radius:14px"></video>`+(rec?`<a class="btn" style="display:block;text-align:center;text-decoration:none;margin-top:8px" download="smart-personality-video.${mt.includes('mp4')?'mp4':'webm'}" href="${url}">⬇️ Download 20s Video</a>`:'');o.textContent='✅ Video taiyar! Preview dekhein aur download karein.';videoBusy=false};
+ if(rec){rec.onstop=()=>finish(URL.createObjectURL(new Blob(ch,{type:mt})));rec.stop()}
+ else{o.innerHTML='<span class="err">Is browser me video save support nahi hai (Chrome use karein). Preview upar chala.</span>';videoBusy=false}
+}
+
+/* ====== FREE AI VIDEO STUDIO (no paid API, runs in your browser) ====== */
+const bi=(en,hg,hi)=>L()==='English'?en:L()==='हिन्दी'?hi:hg;
+const VG={mode:'t',style:'Cinematic',dur:10,ratio:'9:16',img:null,prompt:'',tab:'new',run:false,st:'',res:null,pack:''};
+const DIM={'9:16':[540,960],'16:9':[960,540],'1:1':[720,720]};
+function vdb(mode,fn){return new Promise((res,rej)=>{const q=indexedDB.open('spai_videos',1);q.onupgradeneeded=()=>q.result.createObjectStore('v',{keyPath:'id'});q.onerror=()=>rej(q.error);q.onsuccess=()=>{const d=q.result,t=d.transaction('v',mode);let r=fn(t.objectStore('v'));t.oncomplete=()=>res(r&&r.result);t.onerror=()=>rej(t.error)}})}
+function vsync(){const t=$('#vp');if(t)VG.prompt=t.value}
+function vgen(m){
+ const ch=(arr,cur,key,lab)=>`<div class="chips">${arr.map(v=>`<span class="chip ${cur===v?'on':''}" data-vk="${key}" data-v="${v}">${lab?lab(v):v}</span>`).join('')}</div>`;
+ m.innerHTML=`<button class="back" id="bk">← Back</button><h2>🎥 ${bi('Free AI Video Studio','Free AI Video Studio','फ्री AI वीडियो स्टूडियो')}</h2>
+ <div class="chips">${[['new','✨ '+bi('Create','Banayein','बनाएँ')],['tools','🆓 Free AI tools'],['my','🎞️ '+bi('My Videos','My Videos','मेरे वीडियो')]].map(([k,l])=>`<span class="chip ${VG.tab===k?'on':''}" data-tab="${k}">${l}</span>`).join('')}</div><div id="vbody"></div>`;
+ $('#bk').onclick=()=>nav('studio');
+ m.querySelectorAll('[data-tab]').forEach(c=>c.onclick=()=>{vsync();VG.tab=c.dataset.tab;render()});
+ const b=$('#vbody');if(VG.tab==='my')return vmy(b);
+ b.innerHTML=`${ch(['t','i','c'],VG.mode,'mode',v=>({t:'📝 Text → Video',i:'🖼️ Photo → Video',c:'🧑‍🤝‍🧑 Cartoon Friends'}[v]))}
+ <textarea id="vp" placeholder="${bi('Describe your video in any language…','Video ka idea likhein (Hindi/English/koi bhi language)…','किसी भी भाषा में वीडियो का विचार लिखें…')}">${esc(VG.prompt)}</textarea>`+
+ (VG.tab==='tools'?`<p class="mu">Style</p>${ch(['Realistic','Cinematic','Animated','3D'],VG.style,'style')}<p class="mu">${bi('Total length','Total length','कुल अवधि')}</p>${ch([5,10,15,20],VG.dur,'dur',v=>v+'s')}
+ <div class="card"><p class="mu" style="margin:0">Asli AI video (character walk, bolna, realistic scenes) free me <b>Google Flow</b> (roz kuch free credits, limit badal sakti hai) ya <b>Meta AI</b> me banti hai. Yahan AI aapke liye har 8-second clip ka perfect prompt banata hai (same character, same style) — copy karke wahan paste karein.</p></div>
+ <button class="btn" id="vpk" style="width:100%">🧩 Build Flow / Meta AI prompts</button><div class="card" style="margin-top:10px"><div id="vpo" class="md">${esc(VG.pack)||'<span class="mu">Prompts yahan aayenge.</span>'}</div></div><button class="btn g" id="vcp">📋 Copy</button>`
+ :`${VG.mode==='i'?`<label class="btn g" style="position:relative;display:block;text-align:center;margin-bottom:10px;overflow:hidden">📷 ${VG.img?'Photo badlein':'Photo chunein (Gallery / Camera)'}<input type="file" id="vi" accept="image/*" style="position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:pointer;font-size:0"></label>${VG.img?`<img src="${VG.img.src}" style="width:100%;max-height:220px;object-fit:contain;border-radius:12px;margin-bottom:8px">`:''}`:''}
+ <p class="mu">Style</p>${ch(['Realistic','Cinematic','Animated','3D'],VG.style,'style',v=>({Realistic:'📷 Realistic',Cinematic:'🎬 Cinematic',Animated:'🎨 Animated','3D':'🧊 3D'}[v]))}
+ <p class="mu">${bi('Aspect ratio','Aspect ratio','आस्पेक्ट रेशियो')}</p>${ch(['9:16','16:9','1:1'],VG.ratio,'ratio')}
+ <p class="mu">${bi('Duration','Duration','अवधि')}</p>${ch([5,10,15,20],VG.dur,'dur',v=>v+'s')}
+ <div class="card"><p class="mu" style="margin:0">✅ 100% free, koi API/paise nahi, 20s tak. Text→Video: animated motion-graphics (text, colours, effects). Photo→Video: aapki photo par cinematic camera zoom/pan, light effects, floating particles aur captions. <b>🧑‍🤝‍🧑 Cartoon Friends:</b> 2 original dost (Bholu 🟠 gol-mol aur Chintu 🔵 lamba-patla) aapke topic par dialogue karte hain, chalte-hilte hain, aur mooh hilta hai (speech bubbles ke saath; awaaz nahi). <b>Note:</b> yeh real "AI-generated" scenes ya character ko walk/bolna nahi karata — uske liye 🆓 Free AI tools tab dekhein.</p></div>
+ <button class="btn" id="vgo" style="width:100%" ${VG.run?'disabled':''}>🚀 Generate ${VG.dur}s Video</button>
+ <div class="card" style="margin-top:10px;${VG.st||VG.res?'':'display:none'}"><div id="vtx" class="md">${esc(VG.st)}</div><div id="vcv"></div></div>`);
+ b.querySelectorAll('[data-vk]').forEach(c=>c.onclick=()=>{vsync();let v=c.dataset.v;if(c.dataset.vk==='dur')v=+v;VG[c.dataset.vk]=v;render()});
+ const vi=$('#vi');if(vi)vi.onchange=()=>{const f=vi.files[0];if(!f)return;const im=new Image();im.onload=()=>{vsync();VG.img=im;render()};im.src=URL.createObjectURL(f)};
+ const go=$('#vgo');if(go)go.onclick=vgRun;if(VG.res)showRes();
+ const pk=$('#vpk');if(pk)pk.onclick=async()=>{vsync();if(!VG.prompt.trim())return;const o=$('#vpo');o.innerHTML='<span class="spin"></span>';pk.disabled=true;const n=Math.ceil(VG.dur/8);
+  try{VG.pack=await ai(`Idea (any language): ${VG.prompt}. Write ${n} English text-to-video prompts for Google Flow/Veo/Meta AI, each for one 8-second clip, in ${VG.style} style. Start each with a fixed "Character & style:" line describing the SAME character look/outfit/location so clips match, then action, camera movement, lighting, and ambient sound. ${VG.mode==='i'?'Use the user\'s uploaded photo as the first frame/reference in the tool. ':''}Label "Clip 1", "Clip 2"… Plain text only.`,x=>o.textContent=x)}catch(e){o.innerHTML=`<span class="err">⚠️ ${esc(e.message)}</span>`}pk.disabled=false};
+ const cp=$('#vcp');if(cp)cp.onclick=async()=>{try{await navigator.clipboard.writeText(VG.pack);cp.textContent='✅ Copied'}catch(e){cp.textContent='Select & copy manually'}};
+}
+function showRes(){const e=$('#vcv');if(!e||!VG.res)return;const r=VG.res;e.innerHTML=`<video src="${r.url}" controls playsinline style="width:100%;border-radius:14px;margin-top:8px"></video><a class="btn" style="display:block;text-align:center;text-decoration:none;margin-top:8px" download="smart-video.${r.ext}" href="${r.url}">⬇️ Download</a><div class="row" style="margin-top:8px"><button class="btn g" id="vrg" style="flex:1">🔁 Regenerate</button><button class="btn g" id="ved" style="flex:1">✏️ Edit prompt</button></div><p class="mu">✅ My Videos me save ho gayi.</p>`;$('#vrg').onclick=vgRun;$('#ved').onclick=()=>{VG.res=null;VG.st='';render();setTimeout(()=>$('#vp')&&$('#vp').focus(),50)}}
+function local(idea,n){const E=['🎯','💡','✅','🚀','✨'],P=[['#312e81','#7c3aed'],['#1d4ed8','#9333ea'],['#be185d','#6d28d9'],['#0f766e','#4f46e5']];return [...Array(n)].map((_,i)=>({h:i?['Pehla step','Yeh try karein','Roz practice karein','Aaj shuru karein'][i%4]:idea.slice(0,40),t:'Smart Personality AI',e:E[i%5],a:P[i%4][0],b:P[i%4][1]}))}
+function fit(c,im,W,H,z,px,py,cover){const s=(cover?Math.max(W/im.width,H/im.height):Math.min(W/im.width,H/im.height))*z,w=im.width*s,h=im.height*s;c.drawImage(im,(W-w)/2+px,(H-h)/2+py,w,h)}
+function wrapT(c,txt,x,y,mw,lh){const w=String(txt).split(' ');let l='',a=[];w.forEach(k=>{const t=l?l+' '+k:k;if(c.measureText(t).width>mw&&l){a.push(l);l=k}else l=t});a.push(l);a.forEach((q,i)=>c.fillText(q,x,y+i*lh));return a.length*lh}
+function drawV(c,W,H,t,D,sc,im,st){const n=sc.length,i=Math.min(n-1,Math.floor(t/(D/n))),lt=t-i*(D/n),seg=D/n,s=sc[i],al=Math.max(0,Math.min(1,lt/0.6,(seg-lt)/0.5));
+ if(im){c.save();if(st==='Animated')try{c.filter='saturate(1.35) contrast(1.08)'}catch(e){}
+  if(st==='3D'){try{c.filter='blur(18px) brightness(.7)'}catch(e){}fit(c,im,W,H,1.25,0,0,true);c.filter='none';c.shadowColor='#0008';c.shadowBlur=30;fit(c,im,W,H,.82+.1*t/D,Math.sin(t*.7)*W*.04,Math.cos(t*.5)*H*.015,false);c.shadowBlur=0}
+  else fit(c,im,W,H,1+.25*t/D,Math.sin(t*.5)*W*.035,Math.cos(t*.4)*H*.02,true);
+  c.restore();c.filter='none';
+  const v=c.createRadialGradient(W/2,H/2,Math.min(W,H)*.35,W/2,H/2,Math.max(W,H)*.75);v.addColorStop(0,'#0000');v.addColorStop(1,st==='Cinematic'?'#000c':'#0006');c.fillStyle=v;c.fillRect(0,0,W,H);
+  const x=((t%6)/6)*(W*1.6)-W*.3;const lg=c.createLinearGradient(x-80,0,x+80,0);lg.addColorStop(0,'#fff0');lg.addColorStop(.5,'#ffffff1a');lg.addColorStop(1,'#fff0');c.fillStyle=lg;c.fillRect(0,0,W,H);
+  if(st==='Cinematic'){c.fillStyle='#000';c.fillRect(0,0,W,H*.08);c.fillRect(0,H*.92,W,H*.08)}}
+ else{const g=c.createLinearGradient(0,0,W,H);g.addColorStop(0,s.a);g.addColorStop(1,s.b);c.fillStyle=g;c.fillRect(0,0,W,H)}
+ for(let k=0;k<14;k++){const px=(k*97%W)+Math.sin(t+k)*20,py=H-((t*40+k*83)%H);c.fillStyle='rgba(255,255,255,'+(.12+.1*(k%3))+')';c.beginPath();c.arc(px,py,3+k%4*2,0,7);c.fill()}
+ c.globalAlpha=al;c.textAlign='center';c.fillStyle='#fff';c.shadowColor='#000a';c.shadowBlur=12;
+ const u=Math.min(W,H);if(im){c.font=`800 ${Math.round(u*.07)}px system-ui,sans-serif`;wrapT(c,s.h,W/2,H*.82,W*.84,u*.085)}
+ else{c.font=`${Math.round(u*.24*(1+Math.max(0,.3-lt)))}px sans-serif`;c.fillText(s.e||'✨',W/2,H*.3);c.font=`800 ${Math.round(u*.09)}px system-ui,sans-serif`;const hh=wrapT(c,s.h,W/2,H*.46,W*.84,u*.11);c.font=`${Math.round(u*.052)}px system-ui,sans-serif`;c.fillStyle='#ffffffdd';wrapT(c,s.t,W/2,H*.46+hh+u*.07,W*.8,u*.068)}
+ c.shadowBlur=0;c.globalAlpha=1;c.fillStyle='#ffffff33';c.fillRect(W*.08,H*.955,W*.84,5);c.fillStyle='#fff';c.fillRect(W*.08,H*.955,W*.84*t/D,5)}
+
+function rr(c,x,y,w,h,r){c.beginPath();if(c.roundRect)c.roundRect(x,y,w,h,r);else c.rect(x,y,w,h)}
+function toon(c,x,gy,u,k,talk,t,act){
+ const bob=talk?Math.sin(t*10)*u*.012:Math.sin(t*2+k.length)*u*.006,jp=(talk&&act==='jump')?Math.abs(Math.sin(t*5))*u*.06:0,y=gy-jp+bob,A=k==='A',blink=(t%3)<.12;
+ c.lineCap='round';c.lineJoin='round';c.strokeStyle='#1f2937';c.lineWidth=u*.008;
+ c.fillStyle='#00000022';c.beginPath();c.ellipse(x,gy+u*.01,u*.16,u*.03,0,0,7);c.fill();
+ const lg=A?u*.05:u*.3,lw=A?u*.07:u*.035;c.fillStyle=A?'#1e3a8a':'#374151';[-1,1].forEach(d=>{rr(c,x+d*lw-u*.025,y-lg,u*.05,lg,u*.02);c.fill();c.stroke()});
+ const hy=A?y-u*.52:y-u*.66;
+ const arm=(d)=>{const a=(talk&&act==='wave'&&d>0)?-1.2+Math.sin(t*9)*.5:(talk?-.3+Math.sin(t*8+d)*.3:.35);const sx=x+d*(A?u*.17:u*.09),sy=A?y-u*.3:y-u*.5;c.strokeStyle=A?'#fcd9b6':'#fcd9b6';c.lineWidth=u*.035;c.beginPath();c.moveTo(sx,sy);c.lineTo(sx+d*Math.cos(a)*u*.16,sy+Math.sin(a+1.2)*u*.12*(a<-.5?-1.4:1));c.stroke();c.lineWidth=u*.008;c.strokeStyle='#1f2937'};
+ arm(-1);
+ if(A){c.fillStyle='#f97316';c.beginPath();c.ellipse(x,y-u*.24,u*.19,u*.19,0,0,7);c.fill();c.stroke();c.fillStyle='#fff8';c.beginPath();c.ellipse(x,y-u*.2,u*.1,u*.1,0,0,7);c.fill()}
+ else{c.fillStyle='#3b82f6';rr(c,x-u*.09,y-u*.52,u*.18,u*.25,u*.04);c.fill();c.stroke()}
+ arm(1);
+ c.fillStyle='#fcd9b6';c.beginPath();c.ellipse(x,hy,A?u*.12:u*.09,A?u*.12:u*.11,0,0,7);c.fill();c.stroke();
+ c.fillStyle='#1f2937';if(A){[-1,0,1].forEach(d=>{c.beginPath();c.arc(x+d*u*.04,hy-u*.12,u*.025,3.2,6.2);c.fill()})}else{rr(c,x-u*.095,hy-u*.13,u*.19,u*.05,u*.02);c.fill()}
+ const ex=A?u*.045:u*.035,ey=hy-u*.01;c.fillStyle='#fff';[-1,1].forEach(d=>{c.beginPath();c.ellipse(x+d*ex,ey,u*.022,blink?u*.004:u*.028,0,0,7);c.fill();c.stroke();if(!blink){c.fillStyle='#111';c.beginPath();c.arc(x+d*ex,ey,u*.011,0,7);c.fill();c.fillStyle='#fff'}});
+ if(!A){c.beginPath();[-1,1].forEach(d=>{c.moveTo(x+d*ex+u*.03,ey);c.arc(x+d*ex,ey,u*.03,0,7)});c.stroke()}
+ const my=hy+u*.06;c.fillStyle='#7f1d1d';c.beginPath();if(talk)c.ellipse(x,my,u*.03,u*.008+Math.abs(Math.sin(t*14))*u*.024,0,0,7);else c.arc(x,my-u*.01,u*.03,.2,2.9);talk?(c.fill(),c.stroke()):c.stroke();
+ c.font=`700 ${Math.round(u*.04)}px system-ui,sans-serif`;c.fillStyle='#1f2937';c.textAlign='center';c.fillText(A?'Bholu':'Chintu',x,gy+u*.06)}
+function drawC(c,W,H,t,D,sc){
+ const n=sc.length,seg=D/n,i=Math.min(n-1,Math.floor(t/seg)),lt=t-i*seg,s=sc[i],u=Math.min(W,H),gy=H*.74,who=s.who||(i%2?'B':'A');
+ const g=c.createLinearGradient(0,0,0,H);g.addColorStop(0,/^#[0-9a-f]{3,8}$/i.test(s.bg||'')?s.bg:'#bfdbfe');g.addColorStop(1,'#fef3c7');c.fillStyle=g;c.fillRect(0,0,W,H);
+ c.fillStyle='#fde047';c.beginPath();c.arc(W*.85,H*.1,u*.07,0,7);c.fill();
+ c.fillStyle='#ffffffcc';[0,1,2].forEach(k=>{const cx=((t*18+k*W*.4)%(W*1.3))-W*.15,cy=H*(.22+k*.07);c.beginPath();c.ellipse(cx,cy,u*.1,u*.04,0,0,7);c.ellipse(cx+u*.07,cy+u*.01,u*.07,u*.035,0,0,7);c.fill()});
+ c.fillStyle='#86efac';c.fillRect(0,gy-u*.02,W,H-gy+u*.02);c.fillStyle='#4ade80';c.fillRect(0,gy+u*.1,W,H);
+ const e=Math.min(1,t/1),ax=W*.28-(1-e)*W*.4,bx=W*.72+(1-e)*W*.4;
+ toon(c,ax,gy,u*(W>H?1.15:1.35),'A',who==='A',t,s.act);toon(c,bx,gy,u*(W>H?1.15:1.35),'B',who==='B',t,s.act);
+ const al=Math.min(1,lt/.35,(seg-lt)/.3),bw=W*.84,bx0=W*.08,by=H*.1;c.globalAlpha=Math.max(0,al);c.font=`700 ${Math.round(u*.058)}px system-ui,sans-serif`;
+ const words=String(s.say||s.h||'').split(' ');let lines=[],l='';words.forEach(w=>{const q=l?l+' '+w:w;if(c.measureText(q).width>bw-u*.1&&l){lines.push(l);l=w}else l=q});lines.push(l);const bh=lines.length*u*.075+u*.07;
+ c.fillStyle='#fff';c.strokeStyle='#1f2937';c.lineWidth=u*.008;rr(c,bx0,by,bw,bh,u*.04);c.fill();c.stroke();
+ const tx=who==='A'?ax:bx;c.beginPath();c.moveTo(tx-u*.04,by+bh);c.lineTo(tx,by+bh+u*.08);c.lineTo(tx+u*.04,by+bh);c.closePath();c.fill();c.stroke();
+ c.fillStyle='#1f2937';c.textAlign='center';lines.forEach((q,k)=>c.fillText(q,W/2,by+u*.085+k*u*.075));c.globalAlpha=1;
+ c.fillStyle='#ffffff88';c.fillRect(W*.08,H*.955,W*.84,5);c.fillStyle='#4f46e5';c.fillRect(W*.08,H*.955,W*.84*t/D,5)}
+async function vgRun(){
+ vsync();if(VG.run)return;if(!VG.prompt.trim()&&VG.mode!=='i'){VG.st='⚠️ Pehle prompt likhein.';return render()}if(VG.mode==='i'&&!VG.img){VG.st='⚠️ Pehle photo upload karein.';return render()}
+ if(!window.MediaRecorder){VG.st='❌ Is browser me video save support nahi hai. Chrome use karein.';return render()}
+ VG.run=true;VG.res=null;const D=VG.dur,n=D/5;VG.st='📝 Script ban rahi hai…';render();
+ const set=t=>{VG.st=t;const e=$('#vtx');if(e)e.textContent=t};let sc;
+ try{const t=await ai(VG.mode==='c'?`Return ONLY a JSON array of exactly ${n} objects: {"who":"A" or "B","say":"one short funny or useful line, max 10 words, in ${langName()}","bg":"light pastel hex","act":"wave" or "jump" or "talk"}. Two ORIGINAL friends chat: A = Bholu (round, cheerful, loves food), B = Chintu (tall, thin, clever). Alternate speakers. Topic: ${VG.prompt}. Last line = a friendly lesson. No guaranteed-results claims.`:`Return ONLY a JSON array of exactly ${n} objects. Each: {"h":"headline max 6 words in ${langName()}","t":"line max 12 words in ${langName()}","e":"one emoji","a":"dark hex","b":"vivid hex"}. Caption plan for a ${D}-second ${VG.style} video about: ${VG.prompt||'this photo'}. Scene 1 hook, last scene call to action. No guaranteed-results claims.`);sc=JSON.parse(t.match(/\[[\s\S]*\]/)[0]).slice(0,n);if(sc.length<n)throw 0}catch(e){sc=local(VG.prompt||'My story',n)}
+ const [W,H]=DIM[VG.ratio],cv=document.createElement('canvas');cv.width=W;cv.height=H;cv.style.cssText='width:100%;max-height:60vh;border-radius:14px;background:#000;margin-top:8px';$('#vcv').appendChild(cv);const c=cv.getContext('2d');
+ const mt=['video/webm;codecs=vp9','video/webm','video/mp4'].find(x=>MediaRecorder.isTypeSupported(x));let ch=[];
+ try{const rec=new MediaRecorder(cv.captureStream(30),{mimeType:mt,videoBitsPerSecond:2500000});rec.ondataavailable=e=>e.data.size&&ch.push(e.data);rec.start();
+  const t0=performance.now();await new Promise(r=>{(function lp(){const t=(performance.now()-t0)/1000;if(t>=D){(VG.mode==='c'?drawC:drawV)(c,W,H,D-.01,D,sc,VG.mode==='i'?VG.img:null,VG.style);return r()}set(`🎬 Video ban rahi hai… ${Math.floor(t)}/${D}s — is screen par ruke rahein`);(VG.mode==='c'?drawC:drawV)(c,W,H,t,D,sc,VG.mode==='i'?VG.img:null,VG.style);requestAnimationFrame(lp)})()});
+  const blob=await new Promise(r=>{rec.onstop=()=>r(new Blob(ch,{type:mt}));rec.stop()});const ext=mt.includes('mp4')?'mp4':'webm';
+  await vdb('readwrite',q=>q.put({id:'v'+Date.now(),prompt:VG.prompt||'(photo)',style:VG.style,ratio:VG.ratio,dur:D,ts:Date.now(),blob,ext}));
+  VG.res={url:URL.createObjectURL(blob),ext};VG.st='✅ Video taiyar!'}catch(e){VG.st='❌ '+(e.message||'Video nahi ban payi. Dobara try karein.')}
+ VG.run=false;if(view==='vgen')render()}
+async function vmy(b){b.innerHTML='<span class="spin"></span>';let a=[];try{a=(await vdb('readonly',s=>s.getAll()))||[]}catch(e){}
+ a.sort((x,y)=>y.ts-x.ts);b.innerHTML=a.map(v=>{const u=URL.createObjectURL(v.blob);return `<div class="card"><video src="${u}" controls playsinline style="width:100%;border-radius:12px"></video><p class="mu">${esc((v.prompt||'').slice(0,90))} • ${v.style||''} • ${v.ratio||''} • ${v.dur}s</p><div class="row"><a class="btn" style="text-decoration:none;flex:1;text-align:center" download="${v.id}.${v.ext||'webm'}" href="${u}">⬇️ Download</a><button class="btn g" data-r="${v.id}">🔁 Reuse</button><button class="btn g" data-d="${v.id}">🗑</button></div></div>`}).join('')||'<p class="mu">Abhi koi video nahi.</p>';
+ b.querySelectorAll('[data-d]').forEach(x=>x.onclick=async()=>{await vdb('readwrite',s=>s.delete(x.dataset.d));vmy(b)});
+ b.querySelectorAll('[data-r]').forEach(x=>x.onclick=()=>{const v=a.find(q=>q.id===x.dataset.r);VG.prompt=v.prompt;VG.style=v.style||'Cinematic';VG.ratio=v.ratio||'9:16';VG.dur=v.dur;VG.res=null;VG.st='';VG.tab='new';render()})}
+/* ====== PREMIUM PHOTO STUDIO (free, on-device colour grading + AI prompt control) ====== */
+const PH={img:null,p:{},prompt:'',note:''};
+const PD={br:0,ct:0,sat:0,warm:0,fade:0,to:0,vig:0,grain:0,glow:0,bw:0};
+const PRE={'✨ Premium':{br:.05,ct:.15,sat:.12,warm:.1,vig:.25,grain:.08,glow:.25},'🎬 Cinematic':{ct:.25,sat:-.05,to:.6,vig:.4,fade:.1,grain:.12},'🌇 Golden Hour':{warm:.5,br:.08,sat:.2,glow:.3,vig:.2},'⚫ B&W':{bw:1,ct:.3,vig:.3,grain:.2},'🌸 Soft Glow':{br:.08,ct:-.05,glow:.6,warm:.15,sat:.05},'🔥 Vivid HDR':{ct:.35,sat:.4,br:.02},'🌑 Moody':{br:-.1,ct:.3,sat:-.15,vig:.5,fade:.1}};
+const SL=[['br','Brightness',-.4,.4],['ct','Contrast',-.4,.6],['sat','Colour',-.8,.8],['warm','Warmth',-.6,.6],['to','Teal-Orange',0,1],['fade','Fade',0,.5],['glow','Soft glow',0,1],['vig','Vignette',0,.8],['grain','Film grain',0,.5],['bw','B&W',0,1]];
+const BLUR_OK=(()=>{try{const t=document.createElement('canvas').getContext('2d');t.filter='blur(2px)';return t.filter==='blur(2px)'}catch(e){return false}})();
+function phDraw(raw){const cv=$('#phc');if(!cv||!PH.img)return;const im=PH.img,k=Math.min(1,1080/Math.max(im.width,im.height)),w=Math.round(im.width*k),h=Math.round(im.height*k);if(cv.width!==w||cv.height!==h){cv.width=w;cv.height=h}
+ const c=cv.getContext('2d');c.drawImage(im,0,0,w,h);if(raw)return;const P={...PD,...PH.p},id=c.getImageData(0,0,w,h),D=id.data,cx=w/2,cy=h/2,mx=Math.hypot(cx,cy);
+ for(let i=0,q=0;i<D.length;i+=4,q++){let r=D[i],g=D[i+1],b=D[i+2];const x=q%w,y=(q/w)|0;
+  r*=1+P.br;g*=1+P.br;b*=1+P.br;const cc=1+P.ct;r=(r-128)*cc+128;g=(g-128)*cc+128;b=(b-128)*cc+128;r+=P.warm*28;b-=P.warm*28;
+  let l=.299*r+.587*g+.114*b;const sa=1+P.sat;r=l+(r-l)*sa;g=l+(g-l)*sa;b=l+(b-l)*sa;const lu=l/255-.5;r+=lu*P.to*50;b-=lu*P.to*50;
+  if(P.fade){const f=P.fade;r=r*(1-f)+f*50;g=g*(1-f)+f*50;b=b*(1-f)+f*55}
+  if(P.bw){const z=.299*r+.587*g+.114*b;r+=(z-r)*P.bw;g+=(z-g)*P.bw;b+=(z-b)*P.bw}
+  if(P.vig){const f=1-P.vig*Math.pow(Math.hypot(x-cx,y-cy)/mx,2.2);r*=f;g*=f;b*=f}
+  if(P.grain){const n=(Math.random()-.5)*P.grain*60;r+=n;g+=n;b+=n}
+  D[i]=r<0?0:r>255?255:r;D[i+1]=g<0?0:g>255?255:g;D[i+2]=b<0?0:b>255?255:b}
+ c.putImageData(id,0,0);
+ if(P.glow>0&&BLUR_OK){const t=document.createElement('canvas');t.width=w;t.height=h;const tc=t.getContext('2d');tc.filter='blur('+Math.round(w/55)+'px)';tc.drawImage(cv,0,0);c.globalCompositeOperation='screen';c.globalAlpha=P.glow*.5;c.drawImage(t,0,0);c.globalAlpha=1;c.globalCompositeOperation='source-over'}}
+function photo(m){
+ m.innerHTML=`<button class="back" id="bk">← Back</button><h2>📸 ${bi('Premium Photo Studio','Premium Photo Studio','प्रीमियम फ़ोटो स्टूडियो')}</h2>
+ <div class="card"><p class="mu" style="margin:0">✅ Free, photo aapke phone me hi rehti hai (server par nahi jati). Prompt likhein — AI aapke liye premium colour-grading (cinematic, golden, soft glow, B&amp;W…) set karta hai. <b>Limit:</b> background/kapde/chehra badalna ya object hataana (jaise ChatGPT/Gemini ke image models) ke liye generative image API chahiye, jo yahan nahi hai.</p></div>
+ <div class="row" style="margin-bottom:10px"><label class="btn" style="position:relative;flex:1;text-align:center;overflow:hidden">🖼️ ${PH.img?'Photo badlein':'Gallery se photo'}<input type="file" id="phf" accept="image/*" style="position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:pointer;font-size:0"></label><label class="btn g" style="position:relative;flex:1;text-align:center;overflow:hidden">📷 Camera<input type="file" id="phf2" accept="image/*" capture="environment" style="position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:pointer;font-size:0"></label></div><p class="mu" style="margin-bottom:4px">Upar wale buttons na chalein to yahan se chunein:</p><input type="file" id="phf3" accept="image/*" style="margin-bottom:8px"><p class="mu">Agar Gallery na khule: Chrome me GitHub Pages wala link kholein (Claude app ke andar file picker block ho sakta hai).</p>
+ ${PH.img?`<canvas id="phc" style="width:100%;border-radius:14px;background:#000;margin-bottom:8px;touch-action:none"></canvas><p class="mu">👆 Dabake rakhein = Original dekhein</p>
+ <textarea id="php" placeholder="${bi('e.g. Make it premium, cinematic, warm tone, soft glow','e.g. Isse premium cinematic look do, warm tone aur soft glow ke saath','जैसे: इसे प्रीमियम सिनेमैटिक लुक दें, वार्म टोन और सॉफ्ट ग्लो के साथ')}">${esc(PH.prompt)}</textarea>
+ <button class="btn" id="phai" style="width:100%;margin-bottom:8px">✨ Apply AI look from prompt</button><div id="phn" class="mu">${esc(PH.note)}</div>
+ <p class="mu">Presets</p><div class="chips">${Object.keys(PRE).map(k=>`<span class="chip" data-pr="${k}">${k}</span>`).join('')}</div>
+ <div class="card">${SL.map(([k,n,a,b])=>`<label class="mu" style="display:block">${n}<input type="range" data-sl="${k}" min="${a}" max="${b}" step="0.01" value="${PH.p[k]||0}" style="padding:0;margin:2px 0 6px"></label>`).join('')}</div>
+ <div class="row"><button class="btn" id="phd" style="flex:1">⬇️ Download</button><button class="btn g" id="phr" style="flex:1">↺ Reset</button></div>`:'<p class="mu">📷 Pehle apni photo chunein.</p>'}`;
+ $('#bk').onclick=()=>nav('studio');
+ $('#phf').onchange=e=>{const f=e.target.files[0];if(!f)return;const im=new Image();im.onload=()=>{PH.img=im;PH.p={...PRE['✨ Premium']};PH.note='';render()};im.src=URL.createObjectURL(f)};
+ const p2=$('#phf2');if(p2)p2.onchange=$('#phf').onchange;const p3=$('#phf3');if(p3)p3.onchange=$('#phf').onchange;if(!PH.img)return;phDraw();let raf=0;const rd=()=>{cancelAnimationFrame(raf);raf=requestAnimationFrame(()=>phDraw())};
+ const cv=$('#phc');cv.onpointerdown=()=>phDraw(true);['pointerup','pointerleave','pointercancel'].forEach(ev=>cv.addEventListener(ev,rd));
+ m.querySelectorAll('[data-sl]').forEach(r=>r.oninput=()=>{PH.p[r.dataset.sl]=+r.value;rd()});
+ m.querySelectorAll('[data-pr]').forEach(c=>c.onclick=()=>{PH.prompt=$('#php').value;PH.p={...PRE[c.dataset.pr]};render()});
+ $('#phr').onclick=()=>{PH.p={};PH.note='';render()};
+ $('#phd').onclick=()=>{phDraw();cv.toBlob(b=>{const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='premium-photo.jpg';a.click()},'image/jpeg',.92)};
+ $('#phai').onclick=async()=>{PH.prompt=$('#php').value.trim();if(!PH.prompt)return;const b=$('#phai'),n=$('#phn');b.disabled=true;n.innerHTML='<span class="spin"></span>';
+  try{const t=await ai(`A user wants this photo edit (any language): "${PH.prompt}". Convert it to colour-grading parameters. Return ONLY JSON with numeric keys: br(-0.4..0.4 brightness), ct(-0.4..0.6 contrast), sat(-0.8..0.8), warm(-0.6..0.6), to(0..1 teal-orange cinematic), fade(0..0.5), glow(0..1 soft glow/skin-soft look), vig(0..0.8), grain(0..0.5), bw(0..1), and "note": one short sentence in ${langName()} saying what you applied, and if the request needs background/outfit/face change or object removal say honestly this free studio can't do that part.`);
+   const j=JSON.parse(t.match(/\{[\s\S]*\}/)[0]),p={};SL.forEach(([k,,a,z])=>{if(typeof j[k]==='number')p[k]=Math.max(a,Math.min(z,j[k]))});PH.p=p;PH.note=j.note||'✅ Look apply ho gaya.';render()}
+  catch(e){n.innerHTML=`<span class="err">⚠️ ${esc(e.message||'AI look nahi bana paya. Presets try karein.')}</span>`;b.disabled=false}}}
+/* ====== SURAJ — GROWTH VIDEO LIBRARY (watch YouTube videos inside the app) ====== */
+const SEARCH_ENDPOINT='https://orange-block-e0d1.sirajuxdjk.workers.dev'; // Worker URL from suraj-search-worker.js (optional: enables live YouTube search inside app)
+const ytId=u=>{u=String(u||'');const m=u.match(/(?:v=|youtu\.be\/|shorts\/|embed\/)([\w-]{11})/);return m?m[1]:(/^[\w-]{11}$/.test(u)?u:'')};
+const SU={cat:'All',q:'',play:null,live:[],pick:{},busy:false,err:'',note:''};
+const CATQ={YouTube:['YouTube channel growth for beginners','YouTube channel kaise banaye Hindi','YouTube Shorts tips','YouTube Analytics retention explained'],Instagram:['Instagram organic growth tips','Instagram Reels kaise banaye Hindi','Instagram bio profile optimize','Instagram Insights explained'],Facebook:['Facebook page growth tips','Facebook Reels kaise banaye','Facebook professional mode','Facebook page reach badhaye Hindi'],Confidence:['public speaking confidence tips','confidence se kaise bole Hindi','interview self introduction','camera ke samne confident'] };
+const fmtV=n=>n>=1e6?(n/1e6).toFixed(1)+'M':n>=1e3?Math.round(n/1e3)+'K':n;
+function suraj(m){
+ const cur=(window.SURAJ||[]).map(v=>({...v,id:ytId(v.id||v.url)})).filter(v=>v.id);
+ const ql=SU.q.toLowerCase(),list=cur.filter(v=>(SU.cat==='All'||v.cat===SU.cat)&&(!ql||(v.title+' '+(v.note||'')+' '+(v.lang||'')).toLowerCase().includes(ql)));
+ const card=(v,why)=>`<div class="card row" data-p="${v.id}" style="cursor:pointer;padding:8px"><img src="https://i.ytimg.com/vi/${v.id}/mqdefault.jpg" alt="" style="width:120px;border-radius:10px;flex:none"><div style="flex:1;min-width:0"><b style="font-size:14px">${esc(v.title)}</b><div class="mu">${esc([v.channel,v.views?fmtV(v.views)+' views':'',v.lang,v.note].filter(Boolean).join(' • '))}</div>${why?`<div class="mu" style="color:var(--a)">⭐ ${esc(why)}</div>`:''}</div></div>`;
+ const topics=(CATQ[SU.cat]||Object.values(CATQ).flat().slice(0,6));
+ m.innerHTML=`<button class="back" id="bk">← Back</button><h2>Suraj <span class="mu">• Growth Videos</span></h2>
+ ${SU.play?`<div style="position:relative;padding-top:56.25%;border-radius:14px;overflow:hidden;background:#000"><iframe src="https://www.youtube-nocookie.com/embed/${SU.play}?rel=0&modestbranding=1&playsinline=1" style="position:absolute;inset:0;width:100%;height:100%;border:0" allow="fullscreen; picture-in-picture; autoplay; encrypted-media" allowfullscreen></iframe></div>
+ <div class="card" style="margin-top:8px"><p class="mu" style="margin:0">⚙️ <b>Quality badhane ke liye:</b> player me ⚙️ → Quality → 720p/1080p chunein, aur 🔲 se full-screen karein. App bahar se quality zabardasti set nahi kar sakta (YouTube allow nahi karta).</p></div>
+ <div class="row" style="margin-bottom:10px"><a class="btn g" style="flex:1;text-align:center;text-decoration:none" target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=${SU.play}">▶ YouTube app me kholein</a><button class="btn g" id="psv">💾 Save</button><button class="btn g" id="pc">✖ Close</button></div>`:''}
+ <input id="sq" placeholder="🔍 Growth video search karein (Hindi/English)…" value="${esc(SU.q)}">
+ <div class="chips">${['All','YouTube','Instagram','Facebook','Confidence'].map(c=>`<span class="chip ${SU.cat===c?'on':''}" data-c="${c}">${c}</span>`).join('')}</div>
+ <button class="btn" id="sgo" style="width:100%;margin-bottom:10px">${SEARCH_ENDPOINT?'🔎 YouTube me search':'🔎 YouTube par search kholein'}</button>
+ ${SEARCH_ENDPOINT?'':`<div class="card"><p class="mu" style="margin:0">ℹ️ Abhi in-app search band hai (uske liye <code>SEARCH_ENDPOINT</code> chahiye). <b>Seedha tarika:</b> upar Search dabayein → YouTube me video chunein → <b>Share → Copy link</b> → neeche paste karke <b>▶ Play in app</b> dabayein.</p></div>`}
+ <div class="row"><input id="spl" placeholder="📎 YouTube video link yahan paste karein" style="margin:0"><button class="btn" id="spp">▶ Play</button></div>${SU.note?`<p class="mu">${esc(SU.note)}</p>`:''}
+ <div class="chips" style="margin-top:8px">${topics.map(t=>`<span class="chip" data-t="${esc(t)}">${esc(t)}</span>`).join('')}</div>
+ ${SU.err?`<p class="err">⚠️ ${esc(SU.err)}</p>`:''}${SU.busy?'<span class="spin"></span>':''}
+ ${SU.live.length?`<div class="row" style="margin:6px 0"><h3 style="margin:0;flex:1">Search results</h3><button class="btn g" id="spk">🤖 Best suggest karo</button></div><p class="mu">AI sirf title, channel, views aur length dekhkar suggest karta hai — maine/AI ne video dekhi nahi. Dekhne ke baad khud tay karein.</p>${[...SU.live].sort((a,b)=>(SU.pick[b.id]?1:0)-(SU.pick[a.id]?1:0)).map(v=>card(v,SU.pick[v.id])).join('')}`:''}
+ ${(S.vids||[]).length?`<h3>⭐ Meri saved videos</h3>${S.vids.map(v=>card(v)).join('')}`:''}<h3>📚 Suraj ki chuni hui videos</h3>${list.map(v=>card(v)).join('')||'<p class="mu">Abhi koi curated video nahi. <code>suraj.js</code> file me apni pasandida YouTube links daalein (instructions file me hain). Tab tak upar search use karein.</p>'}`;
+ $('#bk').onclick=()=>nav('home');const pc=$('#pc');if(pc)pc.onclick=()=>{SU.play=null;render()};
+ m.querySelectorAll('[data-p]').forEach(c=>c.onclick=()=>{SU.q=$('#sq').value;SU.play=c.dataset.p;render();$('#main').scrollTop=0});
+ m.querySelectorAll('[data-c]').forEach(c=>c.onclick=()=>{SU.q=$('#sq').value;SU.cat=c.dataset.c;render()});
+ const go=async q=>{q=(q||'').trim();if(!q)return;SU.q=q;if(!SEARCH_ENDPOINT){SU.note='YouTube search khul raha hai. Video chunkar Share → Copy link, phir yahan paste karein. (Tab na khule to YouTube app me "'+q+'" search karein.)';window.open('https://www.youtube.com/results?search_query='+encodeURIComponent(q),'_blank');return render()}
+  SU.busy=true;SU.err='';SU.pick={};render();try{const r=await fetch(SEARCH_ENDPOINT+'?q='+encodeURIComponent(q));const d=await r.json();if(!r.ok||d.error)throw new Error(d.error||'Search error '+r.status);SU.live=d.items||[];if(!SU.live.length)SU.err='Koi video nahi mili.'}catch(e){SU.err=e.message}SU.busy=false;render()};
+ $('#sgo').onclick=()=>go($('#sq').value);
+ $('#spp').onclick=()=>{const id=ytId($('#spl').value.trim());if(!id){SU.note='⚠️ Sahi YouTube link paste karein (youtube.com/watch?v=… ya youtu.be/…).';return render()}SU.note='';SU.play=id;render();$('#main').scrollTop=0};
+ const sv=$('#psv');if(sv)sv.onclick=async()=>{const id=SU.play;if((S.vids||[]).some(v=>v.id===id)){sv.textContent='✅ Saved';return}let title='Saved video';try{const r=await fetch('https://www.youtube.com/oembed?format=json&url='+encodeURIComponent('https://www.youtube.com/watch?v='+id));const d=await r.json();title=d.title||title;var ch=d.author_name}catch(e){}S.vids=[{id,title,channel:ch},...(S.vids||[])];save();render()};$('#sq').onkeydown=e=>{if(e.key==='Enter')go(e.target.value)};
+ m.querySelectorAll('[data-t]').forEach(c=>c.onclick=()=>go(c.dataset.t));
+ const sp=$('#spk');if(sp)sp.onclick=async()=>{sp.disabled=true;sp.textContent='…';try{const t=await ai(`Learner searched YouTube for "${SU.q}" to grow on social media. Videos (JSON): ${JSON.stringify(SU.live.map(v=>({id:v.id,title:v.title,channel:v.channel,views:v.views,dur:v.dur})))}. Pick up to 5 best for a beginner. Judge ONLY from title, channel, views, duration. Prefer clear practical ethical advice and credible/official channels; avoid titles promising guaranteed/overnight growth, buying followers/subscribers, or hacks. Return ONLY JSON [{"id":"","why":"short reason in ${langName()}"}].`);const a=JSON.parse(t.match(/\[[\s\S]*\]/)[0]);SU.pick={};a.forEach(x=>{if(SU.live.some(v=>v.id===x.id))SU.pick[x.id]=x.why||'Suggested'})}catch(e){SU.err=e.message}render()}}
+function hist(m){const a=S.chats||[];
+ m.innerHTML=`<button class="back" id="bk">← Chat</button><h2>🕘 Chat history</h2>${a.length?'<button class="btn g" id="ca" style="margin-bottom:10px;width:100%">🗑 Sab history delete karein</button>':''}${a.map(c=>`<div class="card row"><div style="flex:1;cursor:pointer;min-width:0" data-o="${c.id}"><b>${esc(c.title)}</b><div class="mu">${esc(new Date(c.ts).toLocaleString())} • ${c.msgs.length} messages • tap karke kholein</div></div><button class="btn g" data-x="${c.id}">🗑</button></div>`).join('')||'<p class="mu">Abhi koi history nahi.</p>'}`;
+ $('#bk').onclick=()=>nav('chat');
+ m.querySelectorAll('[data-o]').forEach(d=>d.onclick=()=>{const c=a.find(x=>x.id===d.dataset.o);if(c){S.hist=c.msgs.slice();S.cid=c.id;save();nav('chat')}});
+ m.querySelectorAll('[data-x]').forEach(d=>d.onclick=()=>{S.chats=a.filter(x=>x.id!==d.dataset.x);if(S.cid===d.dataset.x){S.cid=null}save();render()});
+ const ca=$('#ca');if(ca)ca.onclick=()=>{if(confirm('Saari chat history delete karein?')){S.chats=[];S.cid=null;save();render()}}}
+function saved(m){const r=ALL.filter(l=>S.fav.includes(l.id));
+ m.innerHTML=`<h2>🔖 Saved & Progress</h2><div class="card"><b>${S.done.length}/${ALL.length}</b> lessons complete<div class="bar" style="margin-top:6px"><div style="width:${pct()}%"></div></div></div>${r.map(l=>`<div class="card" data-l="${l.id}" style="cursor:pointer">${l.cat.e} ${lt(l.t)} ${S.done.includes(l.id)?'✅':''}</div>`).join('')||'<p class="mu">Koi saved lesson nahi. Lesson me 🔖 Save dabayein.</p>'}`;
+ m.querySelectorAll('[data-l]').forEach(c=>c.onclick=()=>nav('lesson',{id:c.dataset.l}))}
+function plan(m){
+ m.innerHTML=`<button class="back" id="bk">← Back</button><h2>📅 Personalised Plan</h2>
+ <input id="g" placeholder="Your goal (e.g. YouTube channel + confident speaking)" value="${esc(S.goal)}">
+ <div class="chips"><span class="chip on" data-d="7">7 days</span><span class="chip" data-d="30">30 days</span></div>
+ <button class="btn" id="mk" style="width:100%">Create plan</button><div class="card" style="margin-top:12px"><div id="pl" class="md">${S.plan?esc(S.plan):'<span class="mu">Your plan appears here.</span>'}</div></div>`;
+ let d=7;$('#bk').onclick=()=>nav('home');m.querySelectorAll('[data-d]').forEach(c=>c.onclick=()=>{d=c.dataset.d;m.querySelectorAll('[data-d]').forEach(x=>x.classList.toggle('on',x===c))});
+ $('#mk').onclick=async()=>{S.goal=$('#g').value;save();const o=$('#pl');o.innerHTML='<span class="spin"></span>';try{const t=await ai(`${SYS()}\n\nCreate a ${d}-day learning plan. Each day: one task (15-20 min), one speaking/creating exercise, one reflection question. Level ${S.level}.`,x=>o.textContent=x);S.plan=t;save()}catch(e){o.innerHTML=`<span class="err">⚠️ ${esc(e.message)}</span>`}}}
+function me(m){
+ m.innerHTML=`<h2>👤 Profile & Settings</h2><div class="card"><input id="nm" placeholder="Your name" value="${esc(S.name)}"><input id="gl" placeholder="Your goal" value="${esc(S.goal)}">
+ <p class="mu">Level</p><div class="chips">${['Beginner','Intermediate','Advanced'].map(v=>`<span class="chip ${S.level===v?'on':''}" data-v="${v}">${v}</span>`).join('')}</div>
+ <p class="mu">Language</p>${langChips()}<p class="mu">Theme</p><div class="chips">${['auto','light','dark'].map(v=>`<span class="chip ${S.theme===v?'on':''}" data-t="${v}">${v}</span>`).join('')}</div>
+ <p class="mu">Chat refresh karne par clear ho?</p><div class="chips">${[['on','ON (clear)'],['off','OFF (rakhein)']].map(([k,l])=>`<span class="chip ${(S.clr!==false)===(k==='on')?'on':''}" data-cl="${k}">${l}</span>`).join('')}</div>
+ <button class="btn" id="sv" style="width:100%">Save</button></div>
+ <div class="card"><b>📊 Progress</b><p>${S.done.length} lessons done • ${S.fav.length} saved • ${S.hist.length} chat messages</p><button class="btn g" id="rs">Reset all data</button></div>
+ <p class="mu">AI features usage limits apply. Smart Personality AI v1.0</p>`;
+ m.querySelectorAll('[data-v]').forEach(c=>c.onclick=()=>{S.level=c.dataset.v;save();render()});
+ m.querySelectorAll('[data-t]').forEach(c=>c.onclick=()=>{S.theme=c.dataset.t;save();theme();render()});
+ m.querySelectorAll('[data-cl]').forEach(c=>c.onclick=()=>{S.clr=c.dataset.cl==='on';save();render()});
+ $('#sv').onclick=()=>{S.name=$('#nm').value;S.goal=$('#gl').value;save();$('#sv').textContent='✅ Saved'};
+ $('#rs').onclick=()=>{if(confirm('Delete all progress?')){try{localStorage.removeItem('spai')}catch(e){}S={lang:'Hinglish',other:'',level:'Beginner',goal:'',done:[],fav:[],hist:[],name:'',plan:null,theme:'auto'};render()}}}
+function theme(){if(S.theme==='auto')document.documentElement.removeAttribute('data-theme');else document.documentElement.setAttribute('data-theme',S.theme)}
+document.addEventListener('focusin',e=>{const t=e.target;if(t&&(t.tagName==='TEXTAREA'||(t.tagName==='INPUT'&&!['file','range','checkbox'].includes(t.type))))document.body.classList.add('kb')});
+document.addEventListener('focusout',()=>setTimeout(()=>{const a=document.activeElement;if(!a||!(a.tagName==='TEXTAREA'||(a.tagName==='INPUT'&&!['file','range','checkbox'].includes(a.type))))document.body.classList.remove('kb')},150));
+theme();render();
+setTimeout(()=>{const s=$('#splash');s.style.opacity=0;setTimeout(()=>s.remove(),600)},2200);
+</script></body></html>
