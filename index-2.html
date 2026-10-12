@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en"><head><meta charset="utf-8">
 <meta name="theme-color" content="#4f46e5">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icon-192.png">
 <meta name="description" content="Smart Personality AI — personality, communication, confidence aur YouTube/Instagram/Facebook growth seekhein. Hindi, Hinglish, English.">
 <meta property="og:title" content="Smart Personality AI">
 <meta property="og:description" content="Bolna seekhein, confidence badhayein, aur social media par ethically grow karein — AI coach ke saath.">
@@ -499,7 +501,9 @@ function capDraw(){const cv=$('#cpc');if(!cv)return false;const c=cv.getContext(
  else{text=(CP.lines[0]&&CP.lines[0].t)||bi('Your caption here','Aapka caption yahan','आपका कैप्शन यहाँ');local=(performance.now()/1000)%2.8;d=2.8}
  capFrame(c,W,H,text,local,d,CP.st);return true}
 let capRaf=0;
-function capLoop(){cancelAnimationFrame(capRaf);const f=()=>{if(view!=='cap'||!$('#cpc'))return;capDraw();const v=CP.v,tl=$('#cpt');if(v&&tl){tl.textContent=v.currentTime.toFixed(1)+' / '+(CP.D||0).toFixed(1)+'s';const sk=$('#cps');if(sk&&!CP.seek)sk.value=v.currentTime}capRaf=requestAnimationFrame(f)};f()}
+function capLoop(){cancelAnimationFrame(capRaf);let last=0,lt='',ls='';const f=ts=>{if(view!=='cap'||!$('#cpc'))return;const v=CP.v,key=JSON.stringify([CP.st,CP.lines]),sig=v?v.currentTime+'|'+v.readyState+'|'+v.seeking:'',need=!v||!v.paused||CP.exp||sig!==lt||key!==ls;
+ if(need&&(CP.exp||ts-last>=33)){last=ts;lt=sig;ls=key;capDraw();const tl=$('#cpt');if(v&&tl){tl.textContent=v.currentTime.toFixed(1)+' / '+(CP.D||0).toFixed(1)+'s';const sk=$('#cps');if(sk&&!CP.seek)sk.value=v.currentTime}}
+ capRaf=requestAnimationFrame(f)};capRaf=requestAnimationFrame(f)}
 function cpSplit(t){const out=[];t.split(/\n+|(?<=[.!?।])\s+/).map(x=>x.trim()).filter(Boolean).forEach(ln=>{const w=ln.split(/\s+/);for(let i=0;i<w.length;i+=5)out.push(w.slice(i,i+5).join(' '))});return out}
 
 function cpMap(a){const num=v=>typeof v==='number'?v:(/^\d+:\d+/.test(String(v))?String(v).split(':').reduce((x,y)=>x*60+parseFloat(y),0):parseFloat(v)||0);return (Array.isArray(a)?a:[]).map(x=>({t:String(x.text||x.t||'').trim(),s:+num(x.start!==undefined?x.start:x.s).toFixed(1)})).filter(x=>x.t).sort((x,y)=>x.s-y.s)}
@@ -522,13 +526,14 @@ function cap(m){
  <div class="card"><p class="mu" style="margin:0">Apni video me <b>Hindi / Hinglish / English</b> captions lagayein — 12 style presets, 8 fonts, 10 colours aur 10 animations. Original styles hain (CapCut ke asli templates nahi). <b>Note:</b> app video ki awaaz sun kar khud caption nahi likh sakta — aap script/topic dein, AI chhoti lines bana dega, aur ⏱ se timing set karein.</p></div>
  <div class="row" style="margin-bottom:8px"><label class="btn" style="position:relative;flex:1;text-align:center;overflow:hidden">🎞️ ${CP.v?'Video badlein':'Video chunein'}<input type="file" id="cpf" accept="video/*" style="position:absolute;inset:0;width:100%;height:100%;opacity:0;font-size:0"></label></div>
  <input type="file" id="cpf2" accept="video/*" style="margin-bottom:8px">
- <canvas id="cpc" width="${CP.w}" height="${CP.h}" style="width:100%;max-height:62vh;object-fit:contain;border-radius:14px;background:#000"></canvas>
+ <canvas id="cpc" width="${CP.exp&&CP.fw?CP.fw:CP.w}" height="${CP.exp&&CP.fh?CP.fh:CP.h}" style="width:100%;max-height:62vh;object-fit:contain;border-radius:14px;background:#000"></canvas>
  ${CP.v?`<div class="row" style="margin:8px 0"><button class="btn g" id="cpp" style="padding:8px 16px">▶/⏸</button><input type="range" id="cps" min="0" max="${CP.D||1}" step="0.1" value="0" style="margin:0;padding:0"><span id="cpt" class="mu" style="white-space:nowrap">0.0s</span></div>`:'<p class="mu">Video chunne se pehle sample caption par style dekh sakte hain.</p>'}
  <h3>✍️ Captions</h3>
  <button class="btn" id="cpau" style="width:100%;margin-bottom:8px" ${(CP.busy||!CP.v)?'disabled':''}>🎙️ Video ki awaaz se auto captions (jo bola wahi likhega)</button><p class="mu" style="margin-top:0">${CP.v?'Upar ki language (Hinglish / हिन्दी / English) me text likhega. Neeche script wala tarika sirf zaroorat par.':'Pehle video chunein, phir ye button chalega.'}</p>
  <textarea id="cpsc" placeholder="${bi('Paste your script or topic…','Apna script ya topic yahan likhein (kisi bhi language me)…','अपनी स्क्रिप्ट या टॉपिक लिखें…')}">${esc(CP.script)}</textarea>
  <div class="chips">${['Hinglish','हिन्दी','English'].map(l=>`<span class="chip ${CP.lang===l?'on':''}" data-cl="${l}">${l}</span>`).join('')}</div>
  <div class="row"><button class="btn" id="cpai" style="flex:1" ${CP.busy?'disabled':''}>✨ AI captions</button><button class="btn g" id="cpsp" style="flex:1">✂️ Meri text se</button></div>
+ <p id="cpmsg" class="mu" style="margin:8px 0 0">${CP.busy?'⏳ '+esc(CP.msg||'Ho raha hai…'):(CP.lines.length?'✅ '+CP.lines.length+' caption lines ready'+(CP.msg?' — '+esc(CP.msg):''):'⚠️ Abhi koi caption line nahi hai. '+(CP.msg?esc(CP.msg):'Upar se banayein.'))}</p>
  <div id="cpl" style="margin-top:10px">${CP.lines.map((l,i)=>`<div class="row" style="margin-bottom:6px"><input data-t="${i}" value="${esc(l.t)}" style="margin:0;flex:1"><input data-s="${i}" type="number" step="0.1" value="${l.s}" style="margin:0;width:70px"><button class="btn g" data-set="${i}" style="padding:8px">⏱</button><button class="btn g" data-del="${i}" style="padding:8px">🗑</button></div>`).join('')}<button class="btn g" id="cpad" style="width:100%">➕ Line jodein</button></div>
  ${CP.v&&CP.lines.length?'<p class="mu">⏱ = video ko pause karke jis jagah caption dikhana hai wahan dabayein (start time set hota hai).</p>':''}
  <h3>🎨 Style</h3><p class="mu">Presets</p>${ch(Object.keys(CPP),'', 'pre')}
@@ -540,7 +545,7 @@ function cap(m){
  <button class="btn" id="cpx" style="width:100%;margin-top:6px" ${CP.exp?'disabled':''}>🚀 Captioned video export karein</button>
  <div class="card" style="margin-top:10px;${CP.msg||CP.res?'':'display:none'}"><div id="cpm" class="md">${esc(CP.msg)}</div><div id="cpr"></div></div>`;
  $('#bk').onclick=()=>nav('studio');
- const setV=f=>{if(!f)return;CP.file=f;const v=document.createElement('video');v.src=URL.createObjectURL(f);v.playsInline=true;v.preload='auto';v.onloadedmetadata=()=>{const k=Math.min(1,960/Math.max(v.videoWidth,v.videoHeight));CP.w=Math.round(v.videoWidth*k)||540;CP.h=Math.round(v.videoHeight*k)||960;CP.D=v.duration;if(CP.lines.length)cpEven(CP.lines.map(l=>l.t));CP.v=v;v.currentTime=0.01;render()};v.onerror=()=>{CP.msg='❌ Ye video khul nahi payi. MP4 try karein.';render()}};
+ const setV=f=>{if(!f)return;CP.file=f;if(CP.v&&CP.v.parentNode)CP.v.remove();const v=document.createElement('video');v.src=URL.createObjectURL(f);v.playsInline=true;v.preload='auto';v.style.cssText='position:fixed;left:0;top:0;width:2px;height:2px;opacity:0;pointer-events:none';document.body.appendChild(v);v.onloadedmetadata=()=>{const mx=Math.max(v.videoWidth,v.videoHeight),k=Math.min(1,640/mx),kf=Math.min(1,960/mx);CP.w=Math.round(v.videoWidth*k)||360;CP.h=Math.round(v.videoHeight*k)||640;CP.fw=Math.round(v.videoWidth*kf)||540;CP.fh=Math.round(v.videoHeight*kf)||960;CP.msg=(mx>1920||f.size>100e6)?'⚠️ Ye video bahut heavy hai (4K/badi file), isliye lag sakta hai. 720p ya 1080p me convert karke try karein.':'';CP.D=v.duration;if(CP.lines.length)cpEven(CP.lines.map(l=>l.t));CP.v=v;v.currentTime=0.01;render()};v.onerror=()=>{CP.msg='❌ Ye video khul nahi payi. MP4 try karein.';render()}};
  $('#cpf').onchange=e=>setV(e.target.files[0]);$('#cpf2').onchange=e=>setV(e.target.files[0]);
  const sc=$('#cpsc');const sy=()=>{if(sc)CP.script=sc.value};
  const pp=$('#cpp');if(pp)pp.onclick=()=>{CP.v.paused?CP.v.play():CP.v.pause()};const sk=$('#cps');if(sk){sk.oninput=()=>{CP.seek=1;CP.v.currentTime=+sk.value};sk.onchange=()=>{CP.seek=0}}
@@ -593,5 +598,6 @@ function theme(){if(S.theme==='auto')document.documentElement.removeAttribute('d
 document.addEventListener('focusin',e=>{const t=e.target;if(t&&(t.tagName==='TEXTAREA'||(t.tagName==='INPUT'&&!['file','range','checkbox'].includes(t.type))))document.body.classList.add('kb')});
 document.addEventListener('focusout',()=>setTimeout(()=>{const a=document.activeElement;if(!a||!(a.tagName==='TEXTAREA'||(a.tagName==='INPUT'&&!['file','range','checkbox'].includes(a.type))))document.body.classList.remove('kb')},150));
 theme();render();
+if('serviceWorker' in navigator&&location.protocol.startsWith('http'))navigator.serviceWorker.register('sw.js').catch(()=>{});
 setTimeout(()=>{const s=$('#splash');s.style.opacity=0;setTimeout(()=>s.remove(),600)},2200);
 </script></body></html>
