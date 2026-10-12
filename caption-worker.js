@@ -11,17 +11,21 @@ export default {
       if (!audio) return J({ error: "No audio" }, 400);
       const script = lang === "हिन्दी" ? "Hindi in Devanagari script" : lang === "English" ? "English" : "Hinglish (Hindi spoken words written in English/Roman letters, natural spoken style)";
       const prompt = `Transcribe EXACTLY what is spoken in this audio, word for word, in the order spoken. Do NOT add, summarize, improve or invent any words. Write the text as ${script}. Split into short caption lines of at most 6 words. Return ONLY a JSON array like [{"start": 0.0, "text": "..."}] where start is the time in seconds (number) when that line begins. If there is no speech return [].`;
-      const model = env.GEMINI_MODEL || "gemini-3.7-flash";
-      const r = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent`, {
-        method: "POST",
-        headers: { "x-goog-api-key": env.GEMINI_API_KEY, "Content-Type": "application/json" },
-        body: JSON.stringify({ contents: [{ parts: [{ text: prompt }, { inline_data: { mime_type: "audio/wav", data: audio } }] }], generationConfig: { responseMimeType: "application/json", temperature: 0 } }),
-      });
-      const d = await r.json();
-      if (!r.ok) return J({ error: d.error?.message || "Gemini error" }, r.status);
-      const t = (d.candidates?.[0]?.content?.parts || []).map((p) => p.text || "").join("");
-      const m = t.match(/\[[\s\S]*\]/);
-      return J({ lines: m ? JSON.parse(m[0]) : [] });
+      const body = JSON.stringify({ contents: [{ parts: [{ text: prompt }, { inline_data: { mime_type: "audio/wav", data: audio } }] }], generationConfig: { responseMimeType: "application/json", temperature: 0 } });
+      const models = [env.GEMINI_MODEL, "gemini-3.7-flash", "gemini-2.5-flash", "gemini-2.0-flash"].filter(Boolean);
+      let lastErr = "Gemini error", lastStatus = 502;
+      for (const model of models) {
+        const r = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent`, { method: "POST", headers: { "x-goog-api-key": env.GEMINI_API_KEY, "Content-Type": "application/json" }, body });
+        const d = await r.json().catch(() => ({}));
+        if (r.ok) {
+          const t = (d.candidates?.[0]?.content?.parts || []).map((p) => p.text || "").join("");
+          const m = t.match(/\[[\s\S]*\]/);
+          return J({ lines: m ? JSON.parse(m[0]) : [], model });
+        }
+        lastErr = d.error?.message || lastErr; lastStatus = r.status;
+        if (/api key|permission|quota|billing/i.test(lastErr) || [401, 403, 429].includes(r.status)) break; // not a model-name problem
+      }
+      return J({ error: lastErr }, lastStatus);
     } catch (e) { return J({ error: "Server error" }, 500); }
   },
 };
